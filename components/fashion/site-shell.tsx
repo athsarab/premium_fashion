@@ -2,8 +2,10 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { ArrowUpRight, Check, Menu, MoveUpRight, X } from 'lucide-react'
+import { ArrowUpRight, Check, Menu, MoveUpRight, ShoppingBag, X } from 'lucide-react'
 import { navItems } from '@/lib/fashion-data'
+import { CartProvider, useCart } from '@/lib/cart-context'
+import { CartDrawer, CartToast } from './cart-drawer'
 
 export function ScrollProgress() {
   const [progress, setProgress] = useState(0)
@@ -18,6 +20,7 @@ export function ScrollProgress() {
 export function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { count, toggleDrawer } = useCart()
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32)
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -27,7 +30,14 @@ export function Navbar() {
     <header className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
       <Link href="/" className="wordmark">VERRA<span>®</span></Link>
       <nav className="desktop-nav" aria-label="Primary navigation">{navItems.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}</nav>
-      <div className="nav-actions"><Link href="/contact" className="nav-contact">Start a conversation <ArrowUpRight size={14} /></Link><button className="menu-button" onClick={() => setOpen(true)} aria-label="Open menu"><Menu size={22} /></button></div>
+      <div className="nav-actions">
+        <Link href="/contact" className="nav-contact">Start a conversation <ArrowUpRight size={14} /></Link>
+        <button className="nav-cart-btn" onClick={toggleDrawer} aria-label="Open shopping bag">
+          <ShoppingBag size={19} />
+          {count > 0 && <span className="nav-cart-badge">{count}</span>}
+        </button>
+        <button className="menu-button" onClick={() => setOpen(true)} aria-label="Open menu"><Menu size={22} /></button>
+      </div>
     </header>
     <MobileMenu open={open} onClose={() => setOpen(false)} />
   </>
@@ -42,7 +52,7 @@ function MobileMenu({ open, onClose }: { open: boolean, onClose: () => void }) {
 }
 
 export function PageShell({ children, dark = false }: { children: React.ReactNode, dark?: boolean }) {
-  return <div className={dark ? 'site site-dark' : 'site'}><ScrollProgress /><Navbar />{children}<BackToTop /></div>
+  return <CartProvider><div className={dark ? 'site site-dark' : 'site'}><ScrollProgress /><Navbar />{children}<BackToTop /><CartDrawer /><CartToast /></div></CartProvider>
 }
 
 export function Button({ children, href = '#', light = false }: { children: React.ReactNode, href?: string, light?: boolean }) {

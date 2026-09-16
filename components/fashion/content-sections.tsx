@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { MoveUpRight } from 'lucide-react'
+import { MoveUpRight, ShoppingBag } from 'lucide-react'
 import { collections, products, shopProducts, type CollectionKey, type ShopProduct } from '@/lib/fashion-data'
+import { useCart } from '@/lib/cart-context'
 import { Button } from './site-shell'
 import { ProductImage } from './product-image'
 
@@ -21,13 +22,17 @@ export function CategoryBrowser() { const [active, setActive] = useState<Collect
 export function SignatureBreak() { return <section className="signature"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=2200&q=85" alt="VERRA signature campaign" /><div className="signature-overlay" /><div className="signature-content"><p className="eyebrow">THE SIGNATURE SERIES</p><h2>CREATE YOUR<br /><i>OWN SIGNATURE.</i></h2><Button href="/contact" light>Make it yours</Button></div></section> }
 
 function ShopCard({ product }: { product: ShopProduct }) {
+  const { addItem } = useCart()
   return (
     <article className="shop-card">
       <div className="shop-card-image">
         {product.isNew && <span className="shop-badge">NEW</span>}
         <img src={product.image} alt={product.name} loading="lazy" />
         <div className="shop-card-overlay">
-          <span>Quick view</span>
+          <button className="shop-add-btn" onClick={() => addItem(product)} aria-label={`Add ${product.name} to bag`}>
+            <ShoppingBag size={15} />
+            <span>Add to bag</span>
+          </button>
         </div>
       </div>
       <div className="shop-card-body">
