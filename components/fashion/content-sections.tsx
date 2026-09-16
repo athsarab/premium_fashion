@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { MoveUpRight } from 'lucide-react'
-import { collections, products, type CollectionKey } from '@/lib/fashion-data'
+import { collections, products, shopProducts, type CollectionKey, type ShopProduct } from '@/lib/fashion-data'
 import { Button } from './site-shell'
 import { ProductImage } from './product-image'
 
@@ -19,3 +19,65 @@ export function Featured() { return <section className="featured section-pad"><d
 export function CategoryBrowser() { const [active, setActive] = useState<CollectionKey>('women'); const collectionData = collections[active]; return <section className="browser section-pad"><div className="browser-image"><img key={active} src={collectionData.poster} alt={`${active} collection`} /><div className="browser-caption"><span>VERRA / {active.toUpperCase()}</span><span>01—03</span></div></div><div className="browser-list"><p className="eyebrow">03 / FIND YOUR FORM</p>{(Object.keys(collections) as CollectionKey[]).map((key, i) => <button key={key} className={active === key ? 'browser-item active' : 'browser-item'} onMouseEnter={() => setActive(key)} onFocus={() => setActive(key)} onClick={() => setActive(key)}><span>0{i + 1}</span><strong>{key}</strong><MoveUpRight size={20} /></button>)}<p className="browser-detail">Every collection is designed as a conversation between the body and the world around it.</p></div></section> }
 
 export function SignatureBreak() { return <section className="signature"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=2200&q=85" alt="VERRA signature campaign" /><div className="signature-overlay" /><div className="signature-content"><p className="eyebrow">THE SIGNATURE SERIES</p><h2>CREATE YOUR<br /><i>OWN SIGNATURE.</i></h2><Button href="/contact" light>Make it yours</Button></div></section> }
+
+function ShopCard({ product }: { product: ShopProduct }) {
+  return (
+    <article className="shop-card">
+      <div className="shop-card-image">
+        {product.isNew && <span className="shop-badge">NEW</span>}
+        <img src={product.image} alt={product.name} loading="lazy" />
+        <div className="shop-card-overlay">
+          <span>Quick view</span>
+        </div>
+      </div>
+      <div className="shop-card-body">
+        <div className="shop-card-swatches">
+          {product.colors.map((color, i) => (
+            <button
+              key={i}
+              className="shop-swatch"
+              style={{ background: color }}
+              aria-label={`Color option ${i + 1}`}
+            />
+          ))}
+        </div>
+        <h3 className="shop-card-name">{product.name}</h3>
+        <p className="shop-card-variant">{product.variant}</p>
+        <div className="shop-card-pricing">
+          <span className="shop-card-price">{product.price}</span>
+          {product.originalPrice && (
+            <span className="shop-card-original">{product.originalPrice}</span>
+          )}
+        </div>
+      </div>
+    </article>
+  )
+}
+
+export function ShopShowcase({ collection }: { collection: CollectionKey }) {
+  const collectionProducts = shopProducts.filter((p) => p.collection === collection)
+  const collectionLabel = collection === 'men' ? "Men's" : collection === 'women' ? "Women's" : 'Kids'
+  return (
+    <section className="shop-showcase section-pad" id="shop">
+      <div className="shop-showcase-head">
+        <div>
+          <p className="eyebrow">SHOP / {collectionLabel.toUpperCase()} COLLECTION</p>
+          <h2>
+            Shop the<br /><i>collection.</i>
+          </h2>
+        </div>
+        <div className="shop-showcase-side">
+          <p className="shop-showcase-note">
+            Hand-picked pieces designed for everyday expression.
+          </p>
+          <Button href="/contact">View all</Button>
+        </div>
+      </div>
+      <div className="shop-grid">
+        {collectionProducts.map((product) => (
+          <ShopCard key={product.name} product={product} />
+        ))}
+      </div>
+    </section>
+  )
+}

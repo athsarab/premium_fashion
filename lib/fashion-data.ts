@@ -1,7 +1,7 @@
 export type CollectionKey = 'men' | 'women' | 'kids'
 
 export const collections = {
-  men: { key: 'men' as const, label: "MEN'S COLLECTION", title: 'Defined by confidence.', description: 'Tailoring with a quiet edge. Considered layers, precise proportions, and a life lived in motion.', image: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8b8?auto=format&fit=crop&w=1800&q=85', poster: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8b8?auto=format&fit=crop&w=900&q=85', tone: 'charcoal' },
+  men: { key: 'men' as const, label: "MEN'S COLLECTION", title: 'Defined by confidence.', description: 'Tailoring with a quiet edge. Considered layers, precise proportions, and a life lived in motion.', image: '/images/products/men/men2.jpg', poster: '/images/products/men/men2.jpg', tone: 'charcoal' },
   women: { key: 'women' as const, label: "WOMEN'S COLLECTION", title: 'Made to express.', description: 'Fluid forms and considered color for every version of you.', image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1800&q=85', poster: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=85', tone: 'clay' },
   kids: { key: 'kids' as const, label: 'KIDS COLLECTION', title: 'Small style. Big personality.', description: 'Playful essentials made for the days that become memories.', image: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=1800&q=85', poster: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=900&q=85', tone: 'sage' },
 }
@@ -10,11 +10,45 @@ export type Product = { name: string, collection: CollectionKey, category: strin
 
 export const products: Product[] = [
   { name: 'The Column Coat', collection: 'men', category: 'Outerwear / Men', price: '£420', image: '/images/products/men/column-coat.jpg', fallbackImage: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=1000&q=85', imageAlt: 'VERRA men\'s column coat' },
-  { name: 'The Studio Overshirt', collection: 'men', category: 'Layers / Men', price: '£240', image: '/images/products/men/studio-overshirt.jpg', fallbackImage: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8b8?auto=format&fit=crop&w=1000&q=85', imageAlt: 'VERRA men\'s studio overshirt' },
+  { name: 'The Studio Overshirt', collection: 'men', category: 'Layers / Men', price: '£240', image: '/images/products/men/men1.jpeg', fallbackImage: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8b8?auto=format&fit=crop&w=1000&q=85', imageAlt: 'VERRA men\'s studio overshirt styled in rust brown' },
   { name: 'Sculpted Knit', collection: 'women', category: 'Knitwear / Women', price: '£180', image: '/images/products/women/sculpted-knit.jpg', fallbackImage: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1000&q=85', imageAlt: 'VERRA women\'s sculpted knit' },
   { name: 'The Bias Dress', collection: 'women', category: 'Dresses / Women', price: '£295', image: '/images/products/women/bias-dress.jpg', fallbackImage: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=85', imageAlt: 'VERRA women\'s bias dress' },
   { name: 'Pocket Overshirt', collection: 'kids', category: 'Play / Kids', price: '£95', image: '/images/products/kids/pocket-overshirt.jpg', fallbackImage: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=1000&q=85', imageAlt: 'VERRA kids pocket overshirt' },
   { name: 'Weekend Set', collection: 'kids', category: 'Essentials / Kids', price: '£85', image: '/images/products/kids/weekend-set.jpg', fallbackImage: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=1000&q=85', imageAlt: 'VERRA kids weekend set' },
+]
+
+export type ShopProduct = {
+  name: string
+  collection: CollectionKey
+  category: string
+  variant: string
+  price: string
+  originalPrice?: string
+  image: string
+  colors: string[]
+  isNew?: boolean
+}
+
+export const shopProducts: ShopProduct[] = [
+  // Men's products
+  { name: 'The Field Overshirt', collection: 'men', category: 'Layers', variant: 'Rust Brown', price: 'LKR 8,950.00', image: '/images/products/men/mcloth1.jpg', colors: ['#8B4513', '#1d1e1b', '#d8d4cb'], isNew: true },
+  { name: 'The Flannel Check', collection: 'men', category: 'Shirts', variant: 'Charcoal Plaid', price: 'LKR 7,450.00', image: '/images/products/men/mcloth2.jpg', colors: ['#3d3d3d', '#8B4513', '#556B2F'] },
+  { name: 'Essential Crew Tee', collection: 'men', category: 'Essentials', variant: 'Stone White', price: 'LKR 3,250.00', originalPrice: 'LKR 4,500.00', image: '/images/products/men/mcloths3.jpg', colors: ['#f5f5f0', '#1d1e1b', '#716f69'] },
+  { name: 'The Cargo Jogger', collection: 'men', category: 'Bottoms', variant: 'Olive', price: 'LKR 6,850.00', image: '/images/products/men/mcloths4.jpg', colors: ['#556B2F', '#1d1e1b', '#d8d4cb'], isNew: true },
+  { name: 'Weekend Henley', collection: 'men', category: 'Knitwear', variant: 'Oatmeal', price: 'LKR 5,950.00', image: '/images/products/men/mcloths5.jpg', colors: ['#d8d4cb', '#8B4513', '#1d1e1b'] },
+
+  // Women's products
+  { name: 'Boho Tier Dress', collection: 'women', category: 'Dresses', variant: 'Navy Floral', price: 'LKR 9,450.00', image: '/images/products/women/wcloths1.jpg', colors: ['#1a2744', '#8B4513', '#d4a76a'], isNew: true },
+  { name: 'The Denim Trucker', collection: 'women', category: 'Outerwear', variant: 'Light Wash', price: 'LKR 8,250.00', image: '/images/products/women/wcloths2.jpg', colors: ['#6c9dc6', '#1a2744', '#f5f5f0'] },
+  { name: 'Ribbed Tank', collection: 'women', category: 'Essentials', variant: 'Ivory', price: 'LKR 3,950.00', originalPrice: 'LKR 5,200.00', image: '/images/products/women/wcloths3.jpg', colors: ['#f5f5f0', '#1d1e1b', '#d4a76a'] },
+  { name: 'The Slide Sandal', collection: 'women', category: 'Footwear', variant: 'Tan Leather', price: 'LKR 5,750.00', image: '/images/products/women/wcloths4.jpg', colors: ['#c68b59', '#1d1e1b', '#f5f5f0'], isNew: true },
+  { name: 'Straw Market Tote', collection: 'women', category: 'Accessories', variant: 'Natural', price: 'LKR 4,850.00', image: '/images/products/women/wcloths5.jpg', colors: ['#d4a76a', '#8B4513'] },
+
+  // Kids products
+  { name: 'Mini Explorer Jacket', collection: 'kids', category: 'Outerwear', variant: 'Forest Green', price: 'LKR 5,450.00', image: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=85', colors: ['#556B2F', '#1d1e1b', '#d8d4cb'], isNew: true },
+  { name: 'Soft Play Tee', collection: 'kids', category: 'Essentials', variant: 'Sunshine Yellow', price: 'LKR 2,450.00', image: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=85', colors: ['#f0c75e', '#f5f5f0', '#6c9dc6'] },
+  { name: 'Adventure Shorts', collection: 'kids', category: 'Bottoms', variant: 'Sand', price: 'LKR 3,250.00', originalPrice: 'LKR 4,200.00', image: 'https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?auto=format&fit=crop&w=800&q=85', colors: ['#d8d4cb', '#556B2F', '#6c9dc6'] },
+  { name: 'Cozy Hoodie', collection: 'kids', category: 'Layers', variant: 'Dusty Pink', price: 'LKR 4,650.00', image: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=85', colors: ['#d4a0a0', '#f5f5f0', '#1d1e1b'], isNew: true },
 ]
 
 export const navItems = [{ label: 'Men', href: '/men' }, { label: 'Women', href: '/women' }, { label: 'Kids', href: '/kids' }, { label: 'Our story', href: '/about' }, { label: 'Contact', href: '/contact' }]
