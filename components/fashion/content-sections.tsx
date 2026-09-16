@@ -1,14 +1,27 @@
 'use client'
 
-import { useState } from 'react'
-import { MoveUpRight, ShoppingBag } from 'lucide-react'
+import { Fragment, useEffect, useState } from 'react'
+import { ChevronLeft, ChevronRight, MoveUpRight, ShoppingBag } from 'lucide-react'
 import { collections, products, shopProducts, type CollectionKey, type ShopProduct } from '@/lib/fashion-data'
 import { useCart } from '@/lib/cart-context'
 import { Button } from './site-shell'
 import { ProductImage } from './product-image'
 
-export function Hero({ eyebrow = 'THE NEW COLLECTION', title = <>WEAR YOUR<br /><i>IDENTITY.</i></>, description = 'A new uniform for the life you are making.', image, cta = 'Explore collection', href = '#collections' }: { eyebrow?: string, title?: React.ReactNode, description?: string, image: string, cta?: string, href?: string }) {
-  return <section className="hero"><img src={image} alt="VERRA fashion campaign" className="hero-image" /><div className="hero-shade" /><div className="hero-content"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p className="hero-description">{description}</p><div className="hero-actions"><Button href={href} light>{cta}</Button><a href="#story" className="story-link">Discover the story <span>↓</span></a></div></div><div className="hero-meta"><span>AW / 2025</span><span>01 — 05</span></div></section>
+export function Hero({ eyebrow = 'THE NEW COLLECTION', title = <>WEAR YOUR<br /><i>IDENTITY.</i></>, description = 'A new uniform for the life you are making.', image, cta = 'Explore collection', href = '#collections', slides }: { eyebrow?: string, title?: React.ReactNode, description?: string, image: string, cta?: string, href?: string, slides?: Array<{ image: string, eyebrow: string, title: React.ReactNode, description: string, cta: string, href: string }> }) {
+  const heroSlides = slides ?? [{ image, eyebrow, title, description, cta, href }]
+  const [activeSlide, setActiveSlide] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const currentSlide = heroSlides[activeSlide]
+
+  useEffect(() => {
+    if (heroSlides.length < 2 || isPaused) return
+    const timer = window.setInterval(() => setActiveSlide((current) => (current + 1) % heroSlides.length), 6000)
+    return () => window.clearInterval(timer)
+  }, [heroSlides.length, isPaused])
+
+  const goToSlide = (index: number) => setActiveSlide((index + heroSlides.length) % heroSlides.length)
+
+  return <section className="hero" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)} onFocusCapture={() => setIsPaused(true)} onBlurCapture={() => setIsPaused(false)}><div className="hero-slides" aria-live="polite">{heroSlides.map((slide, index) => <img key={slide.image} src={slide.image} alt="VERRA fashion campaign" className={`hero-image ${index === activeSlide ? 'hero-image-active' : ''}`} aria-hidden={index !== activeSlide} />)}</div><div className="hero-shade" /><div className="hero-content" key={activeSlide}><p className="eyebrow">{currentSlide.eyebrow}</p><h1>{typeof currentSlide.title === 'string' ? currentSlide.title.split('|').map((line, index) => <Fragment key={line}>{index > 0 && <br />} {index === 1 ? <i>{line}</i> : line}</Fragment>) : currentSlide.title}</h1><p className="hero-description">{currentSlide.description}</p><div className="hero-actions"><Button href={currentSlide.href} light>{currentSlide.cta}</Button><a href="#story" className="story-link">Discover the story <span>↓</span></a></div></div>{heroSlides.length > 1 && <><div className="hero-meta"><span>AW / 2025</span><span>0{activeSlide + 1} — 0{heroSlides.length}</span></div><div className="hero-controls"><button type="button" onClick={() => goToSlide(activeSlide - 1)} aria-label="Previous campaign image"><ChevronLeft size={18} /></button><div className="hero-dots">{heroSlides.map((slide, index) => <button key={slide.image} type="button" className={index === activeSlide ? 'hero-dot hero-dot-active' : 'hero-dot'} onClick={() => goToSlide(index)} aria-label={`Go to campaign image ${index + 1}`} aria-current={index === activeSlide ? 'true' : undefined} />)}</div><button type="button" onClick={() => goToSlide(activeSlide + 1)} aria-label="Next campaign image"><ChevronRight size={18} /></button></div></>}</section>
 }
 
 export function EditorialIntro() { return <section className="intro section-pad" id="story"><div className="intro-copy"><p className="eyebrow">01 / THE VERRA POINT OF VIEW</p><h2>DESIGNED<br />FOR THE<br /><i>WAY YOU</i><br />MOVE.</h2></div><div className="intro-side"><p className="large-copy">We make clothes with a point of view. Quietly expressive pieces, considered down to the last stitch, for the lives you actually live.</p><p className="body-copy">VERRA is an independent fashion house built on the belief that getting dressed should feel like a form of self-knowledge. We design across generations, seasons, and the spaces between.</p><Button href="/about">Our story</Button></div></section> }

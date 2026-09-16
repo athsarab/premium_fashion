@@ -56,3 +56,9 @@ export const navItems = [{ label: 'Men', href: '/men' }, { label: 'Women', href:
 export const heroImage = 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2200&q=90'
 export const storyImage = 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85'
 export const signatureImage = 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=2200&q=85'
+export const heroSlides = [
+  { image: heroImage, eyebrow: 'THE NEW COLLECTION', title: 'WEAR YOUR|IDENTITY.', description: 'A new uniform for the life you are making.', cta: 'Explore collection', href: '#collections' },
+  { image: storyImage.replace('w=1200', 'w=2200'), eyebrow: 'THE SPRING EDIT', title: 'DRESS FOR|THE MOMENT.', description: 'Quietly expressive pieces for every version of your day.', cta: 'Discover the edit', href: '#collections' },
+  { image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=2200&q=90', eyebrow: 'WOMEN / 2025', title: 'MAKE IT|YOUR OWN.', description: 'Fluid forms and considered colour, made to move with you.', cta: "Explore women's", href: '/women' },
+  { image: signatureImage, eyebrow: 'THE SIGNATURE SERIES', title: 'CREATE YOUR|OWN SIGNATURE.', description: 'Distinctive essentials with a point of view.', cta: 'Find your form', href: '#story' },
+]
