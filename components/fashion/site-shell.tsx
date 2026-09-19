@@ -28,7 +28,7 @@ export function Navbar() {
   }, [])
   return <>
     <header className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-      <Link href="/" className="wordmark">VERRA<span>®</span></Link>
+      <Link href="/" className="wordmark">Jeilees<span>®</span></Link>
       <nav className="desktop-nav" aria-label="Primary navigation">{navItems.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}</nav>
       <div className="nav-actions">
         <Link href="/contact" className="nav-contact">Start a conversation <ArrowUpRight size={14} /></Link>
@@ -45,7 +45,7 @@ export function Navbar() {
 
 function MobileMenu({ open, onClose }: { open: boolean, onClose: () => void }) {
   return <div className={`mobile-menu ${open ? 'mobile-menu-open' : ''}`} aria-hidden={!open}>
-    <div className="mobile-menu-top"><span className="wordmark">VERRA<span>®</span></span><button onClick={onClose} aria-label="Close menu"><X size={24} /></button></div>
+    <div className="mobile-menu-top"><span className="wordmark">Jeilees<span>®</span></span><button onClick={onClose} aria-label="Close menu"><X size={24} /></button></div>
     <nav aria-label="Mobile navigation">{navItems.map((item, i) => <Link key={item.href} href={item.href} onClick={onClose}><span>0{i + 1}</span>{item.label}<MoveUpRight size={20} /></Link>)}</nav>
     <p>Clothing for considered lives.<br />Designed in London, worn everywhere.</p>
   </div>
@@ -75,5 +75,5 @@ export function BackToTop() {
 
 export function Footer() {
   const [joined, setJoined] = useState(false)
-  return <footer className="footer"><div className="footer-top"><div><Link href="/" className="footer-mark">VERRA<span>®</span></Link><p>Clothing for considered lives.</p></div><div className="footer-links"><div><p className="eyebrow">Explore</p>{navItems.slice(0, 4).map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}</div><div><p className="eyebrow">Follow</p>{['Instagram', 'Facebook', 'TikTok', 'Pinterest'].map((social) => <a href="#" key={social}>{social}</a>)}</div></div><div className="newsletter"><p className="eyebrow">Join the list</p>{joined ? <p className="joined"><Check size={15} /> You&apos;re on the list.</p> : <form onSubmit={(event) => { event.preventDefault(); setJoined(true) }}><input aria-label="Email address" type="email" placeholder="Email address" required /><button aria-label="Subscribe"><ArrowUpRight size={18} /></button></form>}</div></div><div className="footer-bottom"><span>© 2025 VERRA STUDIO</span><span>Made for movement</span><button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Back to top ↑</button></div></footer>
+  return <footer className="footer"><div className="footer-top"><div><Link href="/" className="footer-mark">Jeilees<span>®</span></Link><p>Clothing for considered lives.</p></div><div className="footer-links"><div><p className="eyebrow">Explore</p>{navItems.slice(0, 4).map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}</div><div><p className="eyebrow">Follow</p>{['Instagram', 'Facebook', 'TikTok', 'Pinterest'].map((social) => <a href="#" key={social}>{social}</a>)}</div></div><div className="newsletter"><p className="eyebrow">Join the list</p>{joined ? <p className="joined"><Check size={15} /> You&apos;re on the list.</p> : <form onSubmit={(event) => { event.preventDefault(); setJoined(true) }}><input aria-label="Email address" type="email" placeholder="Email address" required /><button aria-label="Subscribe"><ArrowUpRight size={18} /></button></form>}</div></div><div className="footer-bottom"><span>© 2025 Jeilees STUDIO</span><span>Made for movement</span><button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Back to top ↑</button></div></footer>
 }

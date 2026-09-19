@@ -12,7 +12,7 @@ function formatCurrency(amount: number): string {
 
 function buildWhatsAppMessage(items: CartItem[], total: number): string {
   const lines = [
-    '🛍️ *VERRA — New Order*',
+    '🛍️ *Jeilees — New Order*',
     '',
     ...items.map((item, i) => [
       `*${i + 1}. ${item.name}*`,
