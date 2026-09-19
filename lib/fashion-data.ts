@@ -41,7 +41,7 @@ export const shopProducts: ShopProduct[] = [
   // Women's products
   { name: 'Anime printed Oversized tee', collection: 'women', category: 'Dresses', variant: 'Navy Floral', price: 'LKR 9,450.00', image: '/images/products/women/new1.jpeg', hoverImage: '/images/products/women/new2.jpeg', colors: ['#1a2744', '#8B4513', '#d4a76a'], isNew: true },
   { name: 'Epic Legends Oversized Tee', collection: 'women', category: 'Outerwear', variant: 'Light Wash', price: 'LKR 8,250.00', image: '/images/products/women/new3.jpeg', hoverImage: '/images/products/women/new4.jpeg', colors: ['#6c9dc6', '#1a2744', '#f5f5f0'] },
-  { name: 'Mitsuri Oversized Tee', collection: 'women', category: 'Essentials', variant: 'Ivory', price: 'LKR 3,950.00', originalPrice: 'LKR 5,200.00', image: '/images/products/women/new5.jpeg', hoverImage: '/images/products/women/new6.jpeg', colors: ['#f5f5f0', '#1d1e1b', '#d4a76a'] },
+  { name: 'Manjiro Sano Oversized Tee', collection: 'women', category: 'Essentials', variant: 'Ivory', price: 'LKR 3,950.00', originalPrice: 'LKR 5,200.00', image: '/images/products/women/new5.jpeg', hoverImage: '/images/products/women/new6.jpeg', colors: ['#f5f5f0', '#1d1e1b', '#d4a76a'] },
   { name: 'Mitsuri Oversized Tee', collection: 'women', category: 'Footwear', variant: 'Tan Leather', price: 'LKR 5,750.00', image: '/images/products/women/new7.jpeg', hoverImage: '/images/products/women/new8.jpeg', colors: ['#c68b59', '#1d1e1b', '#f5f5f0'], isNew: true },
 
   // Kids products
