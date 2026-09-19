@@ -50,6 +50,7 @@ function ShopCard({ product }: { product: ShopProduct }) {
         </div>
       </div>
       <div className="shop-card-body">
+        <span className="shop-card-logo">Jeilees<span>®</span></span>
         <div className="shop-card-swatches">
           {product.colors.map((color, i) => (
             <button
