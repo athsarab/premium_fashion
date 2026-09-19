@@ -32,17 +32,17 @@ export type ShopProduct = {
 
 export const shopProducts: ShopProduct[] = [
   // Men's products
-  { name: 'The Field Overshirt', collection: 'men', category: 'Layers', variant: 'Rust Brown', price: 'LKR 8,950.00', image: '/images/products/men/new1.jpeg', hoverImage: '/images/products/men/new2.jpeg', colors: ['#8B4513', '#1d1e1b', '#d8d4cb'], isNew: true },
-  { name: 'The Flannel Check', collection: 'men', category: 'Shirts', variant: 'Charcoal Plaid', price: 'LKR 7,450.00', image: '/images/products/men/mcloth2.jpg', hoverImage: '/images/products/men/mcloth1.jpg', colors: ['#3d3d3d', '#8B4513', '#556B2F'] },
-  { name: 'Essential Crew Tee', collection: 'men', category: 'Essentials', variant: 'Stone White', price: 'LKR 3,250.00', originalPrice: 'LKR 4,500.00', image: '/images/products/men/mcloths3.jpg', hoverImage: '/images/products/men/men1.jpg', colors: ['#f5f5f0', '#1d1e1b', '#716f69'] },
-  { name: 'The Cargo Jogger', collection: 'men', category: 'Bottoms', variant: 'Olive', price: 'LKR 6,850.00', image: '/images/products/men/mcloths4.jpg', hoverImage: '/images/products/men/mcloths5.jpg', colors: ['#556B2F', '#1d1e1b', '#d8d4cb'], isNew: true },
-  { name: 'Weekend Henley', collection: 'men', category: 'Knitwear', variant: 'Oatmeal', price: 'LKR 5,950.00', image: '/images/products/men/mcloths5.jpg', hoverImage: '/images/products/men/men2.jpg', colors: ['#d8d4cb', '#8B4513', '#1d1e1b'] },
+  { name: 'Manjiro Sano Oversized Tee', collection: 'men', category: 'Layers', variant: 'Rust Brown', price: 'LKR 8,950.00', image: '/images/products/men/new1.jpeg', hoverImage: '/images/products/men/new2.jpeg', colors: ['#8B4513', '#1d1e1b', '#d8d4cb'], isNew: true },
+  //{ name: 'The Flannel Check', collection: 'men', category: 'Shirts', variant: 'Charcoal Plaid', price: 'LKR 7,450.00', image: '/images/products/men/mcloth2.jpg', hoverImage: '/images/products/men/mcloth1.jpg', colors: ['#3d3d3d', '#8B4513', '#556B2F'] },
+  //{ name: 'Essential Crew Tee', collection: 'men', category: 'Essentials', variant: 'Stone White', price: 'LKR 3,250.00', originalPrice: 'LKR 4,500.00', image: '/images/products/men/mcloths3.jpg', hoverImage: '/images/products/men/men1.jpg', colors: ['#f5f5f0', '#1d1e1b', '#716f69'] },
+  //{ name: 'The Cargo Jogger', collection: 'men', category: 'Bottoms', variant: 'Olive', price: 'LKR 6,850.00', image: '/images/products/men/mcloths4.jpg', hoverImage: '/images/products/men/mcloths5.jpg', colors: ['#556B2F', '#1d1e1b', '#d8d4cb'], isNew: true },
+  //{ name: 'Weekend Henley', collection: 'men', category: 'Knitwear', variant: 'Oatmeal', price: 'LKR 5,950.00', image: '/images/products/men/mcloths5.jpg', hoverImage: '/images/products/men/men2.jpg', colors: ['#d8d4cb', '#8B4513', '#1d1e1b'] },
 
   // Women's products
-  { name: 'Boho Tier Dress', collection: 'women', category: 'Dresses', variant: 'Navy Floral', price: 'LKR 9,450.00', image: '/images/products/women/new1.jpeg', hoverImage: '/images/products/women/new2.jpeg', colors: ['#1a2744', '#8B4513', '#d4a76a'], isNew: true },
-  { name: 'The Denim Trucker', collection: 'women', category: 'Outerwear', variant: 'Light Wash', price: 'LKR 8,250.00', image: '/images/products/women/new3.jpeg', hoverImage: '/images/products/women/new4.jpeg', colors: ['#6c9dc6', '#1a2744', '#f5f5f0'] },
-  { name: 'Ribbed Tank', collection: 'women', category: 'Essentials', variant: 'Ivory', price: 'LKR 3,950.00', originalPrice: 'LKR 5,200.00', image: '/images/products/women/new5.jpeg', hoverImage: '/images/products/women/new6.jpeg', colors: ['#f5f5f0', '#1d1e1b', '#d4a76a'] },
-  { name: 'The Slide Sandal', collection: 'women', category: 'Footwear', variant: 'Tan Leather', price: 'LKR 5,750.00', image: '/images/products/women/new7.jpeg', hoverImage: '/images/products/women/new8.jpeg', colors: ['#c68b59', '#1d1e1b', '#f5f5f0'], isNew: true },
+  { name: 'Anime printed Oversized tee', collection: 'women', category: 'Dresses', variant: 'Navy Floral', price: 'LKR 9,450.00', image: '/images/products/women/new1.jpeg', hoverImage: '/images/products/women/new2.jpeg', colors: ['#1a2744', '#8B4513', '#d4a76a'], isNew: true },
+  { name: 'Epic Legends Oversized Tee', collection: 'women', category: 'Outerwear', variant: 'Light Wash', price: 'LKR 8,250.00', image: '/images/products/women/new3.jpeg', hoverImage: '/images/products/women/new4.jpeg', colors: ['#6c9dc6', '#1a2744', '#f5f5f0'] },
+  { name: 'Mitsuri Oversized Tee', collection: 'women', category: 'Essentials', variant: 'Ivory', price: 'LKR 3,950.00', originalPrice: 'LKR 5,200.00', image: '/images/products/women/new5.jpeg', hoverImage: '/images/products/women/new6.jpeg', colors: ['#f5f5f0', '#1d1e1b', '#d4a76a'] },
+  { name: 'Mitsuri Oversized Tee', collection: 'women', category: 'Footwear', variant: 'Tan Leather', price: 'LKR 5,750.00', image: '/images/products/women/new7.jpeg', hoverImage: '/images/products/women/new8.jpeg', colors: ['#c68b59', '#1d1e1b', '#f5f5f0'], isNew: true },
 
   // Kids products
   { name: 'Mini Explorer Jacket', collection: 'kids', category: 'Outerwear', variant: 'Forest Green', price: 'LKR 5,450.00', image: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=85', hoverImage: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=85', colors: ['#556B2F', '#1d1e1b', '#d8d4cb'], isNew: true },
