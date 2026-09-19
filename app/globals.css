@@ -33,6 +33,8 @@ a { color:inherit; text-decoration:none; } button,input,textarea { font:inherit;
 .shop-card { cursor:pointer; }
 .shop-card-image { position:relative; aspect-ratio:3/4; overflow:hidden; background:#e8e5de; }
 .shop-card-image img { width:100%; height:100%; object-fit:cover; transition:transform .7s cubic-bezier(.2,.6,.2,1); }
+.shop-card-hover-image { position:absolute; inset:0; opacity:0; }
+.shop-card:hover .shop-card-hover-image { opacity:1; }
 .shop-card:hover .shop-card-image img { transform:scale(1.06); }
 .shop-card-overlay { position:absolute; inset:0; background:rgba(29,30,27,.12); opacity:0; display:flex; align-items:center; justify-content:center; transition:opacity .4s; }
 .shop-card:hover .shop-card-overlay { opacity:1; }
