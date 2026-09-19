@@ -41,6 +41,7 @@ function ShopCard({ product }: { product: ShopProduct }) {
       <div className="shop-card-image">
         {product.isNew && <span className="shop-badge">NEW</span>}
         <img src={product.image} alt={product.name} loading="lazy" />
+        {product.hoverImage && <img src={product.hoverImage} alt="" className="shop-card-hover-image" loading="lazy" aria-hidden="true" />}
         <div className="shop-card-overlay">
           <button className="shop-add-btn" onClick={() => addItem(product)} aria-label={`Add ${product.name} to bag`}>
             <ShoppingBag size={15} />
