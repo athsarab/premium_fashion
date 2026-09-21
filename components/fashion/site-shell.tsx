@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { ArrowUpRight, Check, Menu, MoveUpRight, ShoppingBag, X } from 'lucide-react'
-import { navItems } from '@/lib/fashion-data'
+import { ArrowUpRight, Check, ChevronDown, ChevronRight, Menu, ShoppingBag, X } from 'lucide-react'
+import { navItems, shopCategories, type NavItem } from '@/lib/fashion-data'
 import { CartProvider, useCart } from '@/lib/cart-context'
 import { CartDrawer, CartToast } from './cart-drawer'
 
@@ -29,7 +29,27 @@ export function Navbar() {
   return <>
     <header className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
       <Link href="/" className="wordmark">Jeilees<span>®</span></Link>
-      <nav className="desktop-nav" aria-label="Primary navigation">{navItems.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}</nav>
+      <nav className="desktop-nav" aria-label="Primary navigation">
+        {navItems.map((item) => (
+          <div key={item.href} className="desktop-nav-item">
+            <Link href={item.href}>
+              {item.label}
+              {item.children && <ChevronDown size={10} className="desktop-nav-chevron" />}
+            </Link>
+            {item.children && (
+              <div className="desktop-dropdown">
+                <div className="desktop-dropdown-inner">
+                  {item.children.map((child) => (
+                    <Link key={child.href} href={child.href} className="desktop-dropdown-link">
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </nav>
       <div className="nav-actions">
         <Link href="/contact" className="nav-contact">Start a conversation <ArrowUpRight size={14} /></Link>
         <button className="nav-cart-btn" onClick={toggleDrawer} aria-label="Open shopping bag">
@@ -43,23 +63,78 @@ export function Navbar() {
   </>
 }
 
-function MobileMenu({ open, onClose }: { open: boolean, onClose: () => void }) {
-  return <div className={`mobile-menu ${open ? 'mobile-menu-open' : ''}`} aria-hidden={!open}>
-    <div className="mobile-menu-top"><span className="wordmark">Jeilees<span>®</span></span><button onClick={onClose} aria-label="Close menu"><X size={24} /></button></div>
-    <nav aria-label="Mobile navigation">{navItems.map((item, i) => <Link key={item.href} href={item.href} onClick={onClose}><span>0{i + 1}</span>{item.label}<MoveUpRight size={20} /></Link>)}</nav>
-    <p>Clothing for considered lives.<br />Designed in London, worn everywhere.</p>
-  </div>
+function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [expanded, setExpanded] = useState<string | null>(null)
+
+  const toggle = (label: string) => setExpanded(prev => (prev === label ? null : label))
+
+  // Close menu on route change
+  useEffect(() => {
+    if (!open) setExpanded(null)
+  }, [open])
+
+  return (
+    <div className={`mobile-menu ${open ? 'mobile-menu-open' : ''}`} aria-hidden={!open}>
+      <div className="mobile-menu-top">
+        <h2 className="mobile-menu-heading">MENU</h2>
+        <button onClick={onClose} aria-label="Close menu"><X size={24} /></button>
+      </div>
+      <nav className="mobile-nav" aria-label="Mobile navigation">
+        {navItems.map((item) =>
+          item.children ? (
+            <div key={item.href} className="mobile-nav-group">
+              <button
+                className="mobile-nav-toggle"
+                onClick={() => toggle(item.label)}
+                aria-expanded={expanded === item.label}
+              >
+                <span>{item.label}</span>
+                <ChevronRight
+                  size={20}
+                  className={`mobile-nav-arrow ${expanded === item.label ? 'mobile-nav-arrow-open' : ''}`}
+                />
+              </button>
+              <div className={`mobile-nav-children ${expanded === item.label ? 'mobile-nav-children-open' : ''}`}>
+                {item.children.map((child) => (
+                  <Link key={child.href} href={child.href} onClick={onClose} className="mobile-nav-child">
+                    <span className="mobile-nav-dash">—</span> {child.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <Link key={item.href} href={item.href} onClick={onClose} className="mobile-nav-link">
+              <span>{item.label}</span>
+              <ChevronRight size={20} />
+            </Link>
+          )
+        )}
+      </nav>
+      <p className="mobile-menu-tagline">Clothing for considered lives.<br />Designed in London, worn everywhere.</p>
+    </div>
+  )
 }
 
-export function PageShell({ children, dark = false }: { children: React.ReactNode, dark?: boolean }) {
-  return <CartProvider><div className={dark ? 'site site-dark' : 'site'}><ScrollProgress /><Navbar />{children}<BackToTop /><CartDrawer /><CartToast /></div></CartProvider>
+export function PageShell({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+  return (
+    <CartProvider>
+      <div className={dark ? 'site site-dark' : 'site'}>
+        <ScrollProgress />
+        <Navbar />
+        {children}
+        <BackToTop />
+        <CartDrawer />
+        <CartToast />
+      </div>
+    </CartProvider>
+  )
 }
 
-export function Button({ children, href = '#', light = false }: { children: React.ReactNode, href?: string, light?: boolean }) {
+export function Button({ children, href = '#', light = false }: { children: React.ReactNode; href?: string; light?: boolean }) {
   return <Link href={href} className={`editorial-button ${light ? 'editorial-button-light' : ''}`}>{children}<ArrowUpRight size={15} /></Link>
 }
 
-export function Reveal({ children, className = '' }: { children: React.ReactNode, className?: string }) {
+export function Reveal({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return <div className={`reveal ${className}`}>{children}</div>
 }
 
@@ -75,5 +150,46 @@ export function BackToTop() {
 
 export function Footer() {
   const [joined, setJoined] = useState(false)
-  return <footer className="footer"><div className="footer-top"><div><Link href="/" className="footer-mark">Jeilees<span>®</span></Link><p>Clothing for considered lives.</p></div><div className="footer-links"><div><p className="eyebrow">Explore</p>{navItems.slice(0, 4).map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}</div><div><p className="eyebrow">Follow</p>{['Instagram', 'Facebook', 'TikTok', 'Pinterest'].map((social) => <a href="#" key={social}>{social}</a>)}</div></div><div className="newsletter"><p className="eyebrow">Join the list</p>{joined ? <p className="joined"><Check size={15} /> You&apos;re on the list.</p> : <form onSubmit={(event) => { event.preventDefault(); setJoined(true) }}><input aria-label="Email address" type="email" placeholder="Email address" required /><button aria-label="Subscribe"><ArrowUpRight size={18} /></button></form>}</div></div><div className="footer-bottom"><span>© 2025 Jeilees STUDIO</span><span>Made for movement</span><button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Back to top ↑</button></div></footer>
+  return (
+    <footer className="footer">
+      <div className="footer-top">
+        <div>
+          <Link href="/" className="footer-mark">Jeilees<span>®</span></Link>
+          <p>Clothing for considered lives.</p>
+        </div>
+        <div className="footer-links">
+          <div>
+            <p className="eyebrow">Shop</p>
+            <Link href="/new-drop">New Drop</Link>
+            {shopCategories.map((cat) => (
+              <Link href={`/shop/${cat.key}`} key={cat.key}>{cat.label}</Link>
+            ))}
+            <Link href="/sale">Sale</Link>
+          </div>
+          <div>
+            <p className="eyebrow">Follow</p>
+            {['Instagram', 'Facebook', 'TikTok', 'Pinterest'].map((social) => (
+              <a href="#" key={social}>{social}</a>
+            ))}
+          </div>
+        </div>
+        <div className="newsletter">
+          <p className="eyebrow">Join the list</p>
+          {joined ? (
+            <p className="joined"><Check size={15} /> You&apos;re on the list.</p>
+          ) : (
+            <form onSubmit={(event) => { event.preventDefault(); setJoined(true) }}>
+              <input aria-label="Email address" type="email" placeholder="Email address" required />
+              <button aria-label="Subscribe"><ArrowUpRight size={18} /></button>
+            </form>
+          )}
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <span>© 2025 Jeilees STUDIO</span>
+        <span>Made for movement</span>
+        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Back to top ↑</button>
+      </div>
+    </footer>
+  )
 }
