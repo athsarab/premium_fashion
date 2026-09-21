@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const cat = shopCategories.find((c) => c.key === category)
   return pageMetadata({
     title: `Shop ${cat?.label || category}`,
-    description: cat?.description || `Browse our ${category} collection at Jeilees.`,
+    description: cat?.description || `Browse our ${category} collection at JEILEE’S.`,
     path: `/shop/${category}`,
   })
 }

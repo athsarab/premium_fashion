@@ -28,7 +28,7 @@ export function Navbar() {
   }, [])
   return <>
     <header className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-      <Link href="/" className="wordmark">Jeilees<span>®</span></Link>
+      <Link href="/" className="wordmark">JEILEE’S<span>®</span></Link>
       <nav className="desktop-nav" aria-label="Primary navigation">
         {navItems.map((item) => (
           <div key={item.href} className="desktop-nav-item">
@@ -154,7 +154,7 @@ export function Footer() {
     <footer className="footer">
       <div className="footer-top">
         <div>
-          <Link href="/" className="footer-mark">Jeilees<span>®</span></Link>
+          <Link href="/" className="footer-mark">JEILEE’S<span>®</span></Link>
           <p>Clothing for considered lives.</p>
         </div>
         <div className="footer-links">
@@ -186,7 +186,7 @@ export function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© 2025 Jeilees STUDIO</span>
+        <span>© 2025 JEILEE’S STUDIO</span>
         <span>Made for movement</span>
         <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Back to top ↑</button>
       </div>

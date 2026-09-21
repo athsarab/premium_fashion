@@ -2,7 +2,7 @@ import { CollectionSpotlight, EditorialIntro, Footer, Hero, NewDropMarquee, Sale
 import { heroSlides } from '@/lib/fashion-data'
 import { pageMetadata } from '@/lib/seo'
 
-export const metadata = pageMetadata({ title: 'Modern clothing for considered lives', description: 'Discover Jeilees, an independent fashion house creating expressive, considered clothing. Shop our latest collections, new drops, and curated categories.', path: '/' })
+export const metadata = pageMetadata({ title: 'Modern clothing for considered lives', description: 'Discover JEILEE’S, an independent fashion house creating expressive, considered clothing. Shop our latest collections, new drops, and curated categories.', path: '/' })
 
 export default function Home() {
   return (

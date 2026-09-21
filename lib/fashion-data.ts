@@ -24,7 +24,7 @@ export const collections: Collection[] = [
     slug: 'anime-extravaganza-1-0',
     name: 'Anime Extravaganza 1.0',
     description: 'Where anime meets streetwear. Bold prints, expressive designs, limitless identity.',
-    longDescription: 'The first collection from JEILEE’s that celebrates the modern fashion with the captivating world of anime. Explore a world where oversized tees turn into art, adorned with iconic characters from beloved series such as Demon Slayer, Blue Lock,Tokyo Revengers and more. Anime Extravagnza 1.0 makes it possible you to express your passion for both fashion and anime like never before. Immerse yourself in an explosion of style stories.',
+    longDescription: 'The first collection from JEILEE’S that celebrates modern fashion with the captivating world of anime. Explore a world where oversized tees turn into art, adorned with iconic characters from beloved series such as Demon Slayer, Blue Lock, Tokyo Revengers and more. Anime Extravaganza 1.0 makes it possible to express your passion for both fashion and anime like never before. Immerse yourself in an explosion of style stories.',
     image: '/images/products/women/new1.jpeg',
     poster: '/images/products/men/new1.jpeg',
   },
