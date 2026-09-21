@@ -27,7 +27,7 @@ export function Hero({ eyebrow = 'THE NEW COLLECTION', title = <>WEAR YOUR<br />
     <section className="hero" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)} onFocusCapture={() => setIsPaused(true)} onBlurCapture={() => setIsPaused(false)}>
       <div className="hero-slides" aria-live="polite">
         {heroSlides.map((slide, i) => (
-          <img key={slide.image} src={slide.image} alt="Jeilees fashion campaign" className={`hero-image ${i === activeSlide ? 'hero-image-active' : ''}`} aria-hidden={i !== activeSlide} />
+          <img key={slide.image} src={slide.image} alt="JEILEE’S fashion campaign" className={`hero-image ${i === activeSlide ? 'hero-image-active' : ''}`} aria-hidden={i !== activeSlide} />
         ))}
       </div>
       <div className="hero-shade" />
@@ -69,12 +69,12 @@ export function EditorialIntro() {
   return (
     <section className="intro section-pad" id="story">
       <div className="intro-copy">
-        <p className="eyebrow">01 / THE Jeilees POINT OF VIEW</p>
+        <p className="eyebrow">01 / THE JEILEE’S POINT OF VIEW</p>
         <h2>DESIGNED<br />FOR THE<br /><i>WAY YOU</i><br />MOVE.</h2>
       </div>
       <div className="intro-side">
         <p className="large-copy">We make clothes with a point of view. Quietly expressive pieces, considered down to the last stitch, for the lives you actually live.</p>
-        <p className="body-copy">Jeilees is an independent fashion house built on the belief that getting dressed should feel like a form of self-knowledge. We design across generations, seasons, and the spaces between.</p>
+        <p className="body-copy">JEILEE’S is an independent fashion house built on the belief that getting dressed should feel like a form of self-knowledge. We design across generations, seasons, and the spaces between.</p>
         <Button href="/our-story">Our story</Button>
       </div>
     </section>
@@ -221,7 +221,7 @@ export function SaleStrip() {
 export function SignatureBreak() {
   return (
     <section className="signature">
-      <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=2200&q=85" alt="Jeilees signature campaign" />
+      <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=2200&q=85" alt="JEILEE’S signature campaign" />
       <div className="signature-overlay" />
       <div className="signature-content">
         <p className="eyebrow">THE SIGNATURE SERIES</p>
@@ -250,7 +250,7 @@ export function ShopCard({ product }: { product: ShopProduct }) {
         </div>
       </div>
       <div className="shop-card-body">
-        <span className="shop-card-logo">Jeilees<span>®</span></span>
+        <span className="shop-card-logo">JEILEE’S<span>®</span></span>
         <div className="shop-card-swatches">
           {product.colors.map((color, i) => (
             <button key={i} className="shop-swatch" style={{ background: color }} aria-label={`Color option ${i + 1}`} />

@@ -272,7 +272,7 @@ export function OurStoryPage() {
         <Hero
           eyebrow="OUR STORY / EST. 2018"
           title={<>THE STORY<br /><i>BEHIND THE STITCH.</i></>}
-          description="How Jeilees became a voice in considered fashion."
+          description="How JEILEE’S became a voice in considered fashion."
           image="https://images.unsplash.com/photo-1496217590455-aa63a8350eea?auto=format&fit=crop&w=2200&q=85"
           cta="Read our story"
           href="#about-story"
@@ -281,7 +281,7 @@ export function OurStoryPage() {
           <p className="eyebrow">01 / OUR PHILOSOPHY</p>
           <h2>FASHION ISN&apos;T<br />JUST WHAT YOU WEAR.<br /><i>IT&apos;S HOW YOU MOVE</i><br />THROUGH THE WORLD.</h2>
           <div className="about-grid">
-            <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1200&q=85" alt="Jeilees studio portrait" />
+            <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1200&q=85" alt="JEILEE’S studio portrait" />
             <p className="large-copy">
               We believe in clothes that stay with you. In a world of more, we choose better: precise cuts, honest materials, and a slower kind of ambition.
               <br /><br />
@@ -316,9 +316,9 @@ export function AboutPage() {
             <p className="large-copy">
               JEILEE’S, where modern fashion meets classic elegance.
 Our brand is dedicated to redefining modern style by offering a wide range of clothing for both men and women.
-At Jeilee's, we believe that fashion should be accessible to everyone, which is why we strive to offer products that blend quality craftsmanship with everyday looks.
+At JEILEE’S, we believe that fashion should be accessible to everyone, which is why we strive to offer products that blend quality craftsmanship with everyday looks.
               <br /><br />
-              <span className="body-copy">Jeilee's is your go-to destination for incredible fashion that speaks to your regular style. Explore our latest arrivals and join us in celebrating the joy of self-expression through fashion.</span>
+              <span className="body-copy">JEILEE’S is your go-to destination for incredible fashion that speaks to your regular style. Explore our latest arrivals and join us in celebrating the joy of self-expression through fashion.</span>
             </p>
           </div>
         </section>

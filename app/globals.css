@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Josefin+Sans:wght@300;400&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
 @theme inline { --color-background: var(--background); --color-foreground: var(--foreground); --color-border: var(--border); --color-muted: var(--muted); --color-muted-foreground: var(--muted-foreground); --color-accent: var(--accent); --color-primary: var(--primary); }
-:root { --background:#f1eee8; --foreground:#1d1e1b; --primary:#1d1e1b; --muted:#d8d4cb; --muted-foreground:#716f69; --border:#cbc6bc; --accent:#9d493c; --sage:#adb2a2; --charcoal:#1d1e1b; --cream:#f1eee8; --serif:'Playfair Display', Georgia, serif; --sans:'DM Sans', Arial, sans-serif; --mono:'DM Mono', monospace; }
+:root { --background:#f1eee8; --foreground:#1d1e1b; --primary:#1d1e1b; --muted:#d8d4cb; --muted-foreground:#716f69; --border:#cbc6bc; --accent:#9d493c; --sage:#adb2a2; --charcoal:#1d1e1b; --cream:#f1eee8; --serif:'Playfair Display', Georgia, serif; --sans:'DM Sans', Arial, sans-serif; --brand:'Josefin Sans', sans-serif; --mono:'DM Mono', monospace; }
 * { box-sizing:border-box; border-color:var(--border); }
 html { scroll-behavior:smooth; }
 body { margin:0; background:var(--background); color:var(--foreground); font-family:var(--sans); }
@@ -15,7 +15,7 @@ a { color:inherit; text-decoration:none; } button,input,textarea { font:inherit;
 /* ── Navbar ──────────────────────────────────────────────── */
 .navbar { height:82px; position:fixed; z-index:50; inset:0 0 auto; display:flex; align-items:center; justify-content:space-between; padding:0 4.5vw; color:#fff; transition:background .5s, color .5s, height .5s; }
 .navbar-scrolled { height:68px; color:var(--foreground); background:color-mix(in srgb, var(--background) 92%, transparent); backdrop-filter:blur(16px); }
-.wordmark,.footer-mark { font:500 24px var(--serif); letter-spacing:-.08em; }
+.wordmark,.footer-mark { font:300 24px var(--brand); letter-spacing:.22em; text-transform:uppercase; }
 .wordmark span,.footer-mark span { font:10px var(--mono); margin-left:4px; vertical-align:top; letter-spacing:0; }
 .nav-actions { display:flex; align-items:center; gap:24px; }
 .nav-contact { display:flex; align-items:center; gap:5px; font:10px var(--mono); text-transform:uppercase; letter-spacing:.12em; }
@@ -191,7 +191,7 @@ h1 i,h2 i { color:#beb7aa; }
 .shop-badge { position:absolute; top:14px; left:14px; z-index:2; padding:5px 10px; background:var(--charcoal); color:var(--cream); font:500 9px var(--mono); letter-spacing:.14em; text-transform:uppercase; }
 .shop-badge-sale { background:var(--accent); left:auto; right:14px; }
 .shop-card-body { padding:16px 0 0; }
-.shop-card-logo { display:block; margin-bottom:12px; font:500 18px var(--serif); letter-spacing:-.08em; color:var(--foreground); }
+.shop-card-logo { display:block; margin-bottom:12px; font:300 18px var(--brand); letter-spacing:.18em; text-transform:uppercase; color:var(--foreground); }
 .shop-card-logo span { display:inline-block; margin-left:2px; font:8px var(--sans); letter-spacing:0; vertical-align:top; }
 .shop-card-swatches { display:flex; gap:6px; margin-bottom:10px; }
 .shop-swatch { width:14px; height:14px; border-radius:50%; border:1.5px solid rgba(0,0,0,.12); padding:0; cursor:pointer; transition:transform .2s,box-shadow .2s; }
