@@ -35,6 +35,7 @@ export type ShopProduct = {
   name: string
   category: ShopCategory
   collectionSlug?: string
+ main
   variant: string
   price: string
   originalPrice?: string
@@ -81,6 +82,7 @@ export const navItems: NavItem[] = [
 ]
 
 // ── Hero Data ───────────────────────────────────────────
+
 export const heroImage = 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2200&q=90'
 export const storyImage = 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85'
 export const signatureImage = 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=2200&q=85'

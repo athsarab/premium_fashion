@@ -171,6 +171,7 @@ h1 i,h2 i { color:#beb7aa; }
 .shop-showcase { background:var(--background); }
 .shop-showcase-head { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:65px; gap:40px; }
 .shop-showcase-head h2 { margin:18px 0 0; font:500 clamp(52px,7vw,100px)/.88 var(--serif); letter-spacing:-.07em; }
+.shop-current-collection { margin:24px 0 0; color:var(--accent); font:500 11px var(--mono); letter-spacing:.14em; text-transform:uppercase; }
 .shop-showcase-side { max-width:300px; text-align:right; }
 .shop-showcase-note { color:var(--muted-foreground); font:14px/1.55 var(--serif); margin-bottom:28px; }
 .shop-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
@@ -233,6 +234,7 @@ h1 i,h2 i { color:#beb7aa; }
 .collection-intro > p:last-child,.collection-intro .large-copy { max-width:380px; font:22px/1.35 var(--serif); }
 
 /* ── Nav Cart Button ─────────────────────────────────────── */
+
 .nav-cart-btn { position:relative; background:none; border:0; color:inherit; padding:0; display:flex; align-items:center; }
 .nav-cart-badge { position:absolute; top:-6px; right:-8px; min-width:17px; height:17px; border-radius:50%; background:var(--accent); color:#fff; font:700 9px var(--sans); display:grid; place-items:center; padding:0 4px; animation:badgePop .35s cubic-bezier(.2,.8,.2,1.4); }
 @keyframes badgePop { from { transform:scale(0) } to { transform:scale(1) } }

@@ -4,6 +4,7 @@ import { Fragment, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { ArrowUpRight, ChevronLeft, ChevronRight, MoveUpRight, ShoppingBag } from 'lucide-react'
 import { collections, shopProducts, shopCategories, getNewDropProducts, getSaleProducts, getCollectionProducts, type ShopProduct, type ShopCategory } from '@/lib/fashion-data'
+
 import { useCart } from '@/lib/cart-context'
 import { Button } from './site-shell'
 
@@ -210,6 +211,7 @@ export function SaleStrip() {
             <ShopCard key={product.name} product={product} />
           ))}
         </div>
+
       </div>
     </section>
   )
@@ -267,6 +269,7 @@ export function ShopCard({ product }: { product: ShopProduct }) {
 
 /* ── Shop Showcase (reusable for any product set) ───────── */
 export function ShopShowcase({ products, eyebrow, heading, note }: { products: ShopProduct[]; eyebrow?: string; heading?: React.ReactNode; note?: string }) {
+ 
   return (
     <section className="shop-showcase section-pad" id="shop">
       <div className="shop-showcase-head">
@@ -281,6 +284,7 @@ export function ShopShowcase({ products, eyebrow, heading, note }: { products: S
       </div>
       <div className="shop-grid">
         {products.map((product) => (
+ 
           <ShopCard key={product.name} product={product} />
         ))}
       </div>

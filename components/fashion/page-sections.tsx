@@ -7,6 +7,7 @@ import { shopProducts, shopCategories, collections, getProductsByCategory, getCo
 import { Button, Footer, PageShell } from './site-shell'
 import { Hero, SignatureBreak, ShopCard, ShopShowcase } from './content-sections'
 
+
 /* ── Contact Form ───────────────────────────────────────── */
 export function ContactForm() {
   const [sent, setSent] = useState(false)
@@ -52,6 +53,7 @@ export function ShopAllPage() {
 function ShopFilteredContent() {
   const [active, setActive] = useState<ShopCategory | 'all'>('all')
   const filtered = active === 'all' ? shopProducts : getProductsByCategory(active)
+
 
   return (
     <section className="shop-page section-pad" id="shop">
