@@ -88,10 +88,10 @@ export const storyImage = 'https://images.unsplash.com/photo-1529139574466-a3030
 export const signatureImage = 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=2200&q=85'
 
 export const heroSlides = [
-  { image: heroImage, eyebrow: 'THE NEW DROP', title: 'WEAR YOUR|IDENTITY.', description: 'A new uniform for the life you are making.', cta: 'Shop new arrivals', href: '/new-drop' },
+  { image: heroImage, eyebrow: 'THE NEW DROP', title: 'YOUR EVERYDAY|ELEVATED.', description: 'A new uniform for the life you are making.', cta: 'Shop new arrivals', href: '/new-drop' },
   { image: '/images/products/women/new3.jpeg', eyebrow: 'ANIME EXTRAVAGANZA 1.0', title: 'EXPRESS|YOUR SOUL.', description: 'Where anime meets streetwear. Bold prints, limitless expression.', cta: 'Explore collection', href: '/collections/anime-extravaganza-1-0' },
   { image: storyImage.replace('w=1200', 'w=2200'), eyebrow: 'SHOP THE EDIT', title: 'MAKE IT|YOUR OWN.', description: 'Curated pieces for every version of your day.', cta: 'Shop now', href: '/shop' },
-  { image: signatureImage, eyebrow: 'THE SIGNATURE SERIES', title: 'CREATE YOUR|OWN SIGNATURE.', description: 'Distinctive essentials with a point of view.', cta: 'Find your form', href: '#story' },
+  { image: signatureImage, eyebrow: 'THE SIGNATURE SERIES', title: 'DRESS DIFFERENT|FEEL DIFFERENT.', description: 'Distinctive essentials with a point of view.', cta: 'Find your form', href: '#story' },
 ]
 
 // ── Helper Functions ────────────────────────────────────
