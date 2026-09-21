@@ -313,11 +313,12 @@ export function AboutPage() {
           <p className="eyebrow">01 / WHO WE ARE</p>
           <h2>FASHION ISN&apos;T<br />JUST WHAT YOU WEAR.<br /><i>IT&apos;S HOW YOU MOVE</i><br />THROUGH THE WORLD.</h2>
           <div className="about-grid">
-            <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1200&q=85" alt="Jeilees studio portrait" />
             <p className="large-copy">
-              We believe in clothes that stay with you. In a world of more, we choose better: precise cuts, honest materials, and a slower kind of ambition.
+              JEILEE’S, where modern fashion meets classic elegance.
+Our brand is dedicated to redefining modern style by offering a wide range of clothing for both men and women.
+At Jeilee's, we believe that fashion should be accessible to everyone, which is why we strive to offer products that blend quality craftsmanship with everyday looks.
               <br /><br />
-              <span className="body-copy">Our collections are designed in London and made with a small, trusted network of makers. We are interested in the tension between utility and beauty — the things you need, made extraordinary.</span>
+              <span className="body-copy">Jeilee's is your go-to destination for incredible fashion that speaks to your regular style. Explore our latest arrivals and join us in celebrating the joy of self-expression through fashion.</span>
             </p>
           </div>
         </section>
