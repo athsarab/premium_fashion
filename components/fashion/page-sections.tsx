@@ -219,7 +219,7 @@ export function NewDropPage() {
           eyebrow="JUST LANDED"
           title={<>NEW<br /><i>DROP.</i></>}
           description="The latest arrivals. Fresh pieces that just hit the floor."
-          image={products[0]?.image || heroImage}
+          image="/images/products/newdrop.jpeg"
           cta="Shop new"
           href="#shop"
         />
