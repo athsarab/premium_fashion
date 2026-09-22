@@ -3,6 +3,7 @@ export type ShopCategory = 'basics' | 'tops' | 'bottoms' | 'dresses' | 'skirts'
 
 export const shopCategories: { key: ShopCategory; label: string; description: string; image: string }[] = [
   { key: 'basics', label: 'Basics', description: 'Essential foundations for every wardrobe.', image: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=800&q=85' },
+
   { key: 'tops', label: 'Tops', description: 'Statement pieces and everyday favorites.', image: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=800&q=85' },
   { key: 'bottoms', label: 'Bottoms', description: 'From tailored trousers to relaxed fits.', image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=85' },
   { key: 'dresses', label: 'Dresses', description: 'Fluid forms for every occasion.', image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=85' },
@@ -26,7 +27,7 @@ export const collections: Collection[] = [
     description: 'Where anime meets streetwear. Bold prints, expressive designs, limitless identity.',
     longDescription: 'The first collection from JEILEE’S that celebrates modern fashion with the captivating world of anime. Explore a world where oversized tees turn into art, adorned with iconic characters from beloved series such as Demon Slayer, Blue Lock, Tokyo Revengers and more. Anime Extravaganza 1.0 makes it possible to express your passion for both fashion and anime like never before. Immerse yourself in an explosion of style stories.',
     image: '/images/products/women/new1.jpeg',
-    poster: '/images/products/men/new1.jpeg',
+    poster: '/images/products/anime.jpeg',
   },
 ]
 
@@ -47,16 +48,16 @@ export type ShopProduct = {
 
 export const shopProducts: ShopProduct[] = [
   // ── Anime Extravaganza 1.0 Collection ──
-  { name: 'Manjiro Sano Oversized Tee', category: 'tops', collectionSlug: 'anime-extravaganza-1-0', variant: 'Rust Brown', price: 'LKR 8,950.00', image: '/images/products/men/new1.jpeg', hoverImage: '/images/products/men/new2.jpeg', colors: ['#8B4513', '#1d1e1b', '#d8d4cb'], isNew: true },
-  { name: 'Anime Printed Oversized Tee', category: 'tops', collectionSlug: 'anime-extravaganza-1-0', variant: 'Navy Floral', price: 'LKR 9,450.00', image: '/images/products/women/new1.jpeg', hoverImage: '/images/products/women/new2.jpeg', colors: ['#1a2744', '#8B4513', '#d4a76a'], isNew: true },
-  { name: 'Epic Legends Oversized Tee', category: 'tops', collectionSlug: 'anime-extravaganza-1-0', variant: 'Light Wash', price: 'LKR 8,250.00', image: '/images/products/women/new3.jpeg', hoverImage: '/images/products/women/new4.jpeg', colors: ['#6c9dc6', '#1a2744', '#f5f5f0'] },
-  { name: 'Manjiro Sano Drop-Shoulder Tee', category: 'tops', collectionSlug: 'anime-extravaganza-1-0', variant: 'Ivory', price: 'LKR 3,950.00', originalPrice: 'LKR 5,200.00', image: '/images/products/women/new5.jpeg', hoverImage: '/images/products/women/new6.jpeg', colors: ['#f5f5f0', '#1d1e1b', '#d4a76a'] },
-  { name: 'Mitsuri Oversized Tee', category: 'tops', collectionSlug: 'anime-extravaganza-1-0', variant: 'Tan Leather', price: 'LKR 5,750.00', image: '/images/products/women/new7.jpeg', hoverImage: '/images/products/women/new8.jpeg', colors: ['#c68b59', '#1d1e1b', '#f5f5f0'], isNew: true },
+  { name: 'Manjiro Sano Oversized Tee', category: 'basics', collectionSlug: 'anime-extravaganza-1-0', variant: 'Rust Brown', price: 'LKR 8,950.00', image: '/images/products/men/new1.jpeg', hoverImage: '/images/products/men/new2.jpeg', colors: ['#8B4513', '#1d1e1b', '#d8d4cb'], isNew: true },
+  { name: 'Anime Printed Oversized Tee', category: 'basics', collectionSlug: 'anime-extravaganza-1-0', variant: 'Navy Floral', price: 'LKR 9,450.00', image: '/images/products/women/new1.jpeg', hoverImage: '/images/products/women/new2.jpeg', colors: ['#1a2744', '#8B4513', '#d4a76a'], isNew: true },
+  { name: 'Epic Legends Oversized Tee', category: 'basics', collectionSlug: 'anime-extravaganza-1-0', variant: 'Light Wash', price: 'LKR 8,250.00', image: '/images/products/women/new3.jpeg', hoverImage: '/images/products/women/new4.jpeg', colors: ['#6c9dc6', '#1a2744', '#f5f5f0'], isNew: true  },
+  { name: 'Manjiro Sano Drop-Shoulder Tee', category: 'basics', collectionSlug: 'anime-extravaganza-1-0', variant: 'Ivory', price: 'LKR 3,950.00', originalPrice: 'LKR 5,200.00', image: '/images/products/women/new5.jpeg', hoverImage: '/images/products/women/new6.jpeg', colors: ['#f5f5f0', '#1d1e1b', '#d4a76a'] , isNew: true },
+  { name: 'Mitsuri Oversized Tee', category: 'basics', collectionSlug: 'anime-extravaganza-1-0', variant: 'Tan Leather', price: 'LKR 5,750.00', image: '/images/products/women/new7.jpeg', hoverImage: '/images/products/women/new8.jpeg', colors: ['#c68b59', '#1d1e1b', '#f5f5f0'], isNew: true },
   // ── General Catalog ──
-  { name: 'Mini Explorer Jacket', category: 'tops', variant: 'Forest Green', price: 'LKR 5,450.00', image: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=85', hoverImage: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=85', colors: ['#556B2F', '#1d1e1b', '#d8d4cb'], isNew: true },
-  { name: 'Soft Play Tee', category: 'basics', variant: 'Sunshine Yellow', price: 'LKR 2,450.00', image: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=85', hoverImage: 'https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?auto=format&fit=crop&w=800&q=85', colors: ['#f0c75e', '#f5f5f0', '#6c9dc6'] },
-  { name: 'Adventure Shorts', category: 'bottoms', variant: 'Sand', price: 'LKR 3,250.00', originalPrice: 'LKR 4,200.00', image: 'https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?auto=format&fit=crop&w=800&q=85', hoverImage: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=85', colors: ['#d8d4cb', '#556B2F', '#6c9dc6'] },
-  { name: 'Cozy Hoodie', category: 'tops', variant: 'Dusty Pink', price: 'LKR 4,650.00', image: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=85', hoverImage: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=85', colors: ['#d4a0a0', '#f5f5f0', '#1d1e1b'], isNew: true },
+ // { name: 'Mini Explorer Jacket', category: 'tops', variant: 'Forest Green', price: 'LKR 5,450.00', image: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=85', hoverImage: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=85', colors: ['#556B2F', '#1d1e1b', '#d8d4cb'], isNew: true },
+
+ // { name: 'Adventure Shorts', category: 'bottoms', variant: 'Sand', price: 'LKR 3,250.00', originalPrice: 'LKR 4,200.00', image: 'https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?auto=format&fit=crop&w=800&q=85', hoverImage: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=85', colors: ['#d8d4cb', '#556B2F', '#6c9dc6'] },
+ // { name: 'Cozy Hoodie', category: 'tops', variant: 'Dusty Pink', price: 'LKR 4,650.00', image: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=85', hoverImage: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=85', colors: ['#d4a0a0', '#f5f5f0', '#1d1e1b'], isNew: true },
 ]
 
 // ── Navigation ──────────────────────────────────────────
