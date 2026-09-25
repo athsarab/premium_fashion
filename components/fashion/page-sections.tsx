@@ -234,7 +234,7 @@ export function NewDropPage() {
       </main>
     </PageShell>
   )
-}
+} 
 
 /* ── Sale Page ──────────────────────────────────────────── */
 export function SalePage() {
