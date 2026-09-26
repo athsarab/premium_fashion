@@ -384,7 +384,13 @@ h1 i,h2 i { color:#beb7aa; }
   .product-card:last-child { grid-column:auto; max-width:none; }
   .product-image { aspect-ratio:4/5; }
   .hero-meta { display:none; }
-  .shop-grid { grid-template-columns:1fr; }
+  .shop-grid { grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:14px; row-gap:38px; }
+  .shop-card-image { aspect-ratio:3/4; }
+  .shop-card-body { padding-top:12px; }
+  .shop-card-logo,.shop-card-swatches,.shop-card-variant { display:none; }
+  .shop-card-name { min-height:34px; font-size:12px; line-height:1.4; text-transform:uppercase; letter-spacing:.02em; }
+  .shop-card-pricing { margin-top:8px; gap:6px; }
+  .shop-card-price,.shop-card-original { font-size:12px; }
   .cat-grid { grid-template-columns:1fr; grid-auto-rows:260px; }
   .cat-grid > :nth-child(1) { grid-row:auto; }
   .cat-grid > :nth-child(4) { grid-column:auto; }
