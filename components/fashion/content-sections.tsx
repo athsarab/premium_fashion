@@ -2,10 +2,9 @@
 
 import { Fragment, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight, ChevronLeft, ChevronRight, MoveUpRight, ShoppingBag } from 'lucide-react'
-import { collections, shopProducts, shopCategories, getNewDropProducts, getSaleProducts, getCollectionProducts, type ShopProduct, type ShopCategory } from '@/lib/fashion-data'
+import { ArrowUpRight, ChevronLeft, ChevronRight, MoveUpRight } from 'lucide-react'
+import { collections, shopProducts, shopCategories, getNewDropProducts, getSaleProducts, getCollectionProducts, productSlug, type ShopProduct, type ShopCategory } from '@/lib/fashion-data'
 
-import { useCart } from '@/lib/cart-context'
 import { Button } from './site-shell'
 
 /* ── Hero Carousel ──────────────────────────────────────── */
@@ -234,20 +233,13 @@ export function SignatureBreak() {
 
 /* ── Shop Card ──────────────────────────────────────────── */
 export function ShopCard({ product }: { product: ShopProduct }) {
-  const { addItem } = useCart()
   return (
-    <article className="shop-card">
+    <Link href={`/shop/product/${productSlug(product.name)}`} className="shop-card">
       <div className="shop-card-image">
         {product.isNew && <span className="shop-badge">NEW</span>}
         {product.originalPrice && <span className="shop-badge shop-badge-sale">SALE</span>}
         <img src={product.image} alt={product.name} loading="lazy" />
         {product.hoverImage && <img src={product.hoverImage} alt="" className="shop-card-hover-image" loading="lazy" aria-hidden="true" />}
-        <div className="shop-card-overlay">
-          <button className="shop-add-btn" onClick={() => addItem(product)} aria-label={`Add ${product.name} to bag`}>
-            <ShoppingBag size={15} />
-            <span>Add to bag</span>
-          </button>
-        </div>
       </div>
       <div className="shop-card-body">
         <span className="shop-card-logo">JEILEE’S<span>®</span></span>
@@ -263,7 +255,7 @@ export function ShopCard({ product }: { product: ShopProduct }) {
           {product.originalPrice && <span className="shop-card-original">{product.originalPrice}</span>}
         </div>
       </div>
-    </article>
+    </Link>
   )
 }
 
