@@ -208,8 +208,11 @@ h1 i,h2 i { color:#beb7aa; }
 /* ── Product Detail ─────────────────────────────────────── */
 .product-detail { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(320px,.75fr); gap:6vw; padding:110px 5vw 90px; }
 .product-detail-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; align-content:start; }
-.product-detail-image { aspect-ratio:3/4; overflow:hidden; background:#e8e5de; }
+.product-detail-image { aspect-ratio:3/4; overflow:hidden; padding:0; border:0; background:#e8e5de; cursor:zoom-in; }
 .product-detail-image img { width:100%; height:100%; object-fit:cover; display:block; }
+.product-lightbox { position:fixed; z-index:120; inset:0; display:grid; place-items:center; padding:30px; background:rgba(15,16,14,.94); cursor:zoom-out; animation:fadeIn .25s ease both; }
+.product-lightbox img { max-width:92vw; max-height:92vh; width:auto; height:auto; object-fit:contain; }
+.product-lightbox-close { position:absolute; top:24px; right:28px; display:grid; place-items:center; width:42px; height:42px; border:1px solid rgba(255,255,255,.45); background:none; color:#fff; cursor:pointer; }
 .product-detail-info { position:sticky; top:110px; align-self:start; padding:35px 1vw 0 0; }
 .product-detail-info h1 { max-width:520px; margin:22px 0 20px; font:500 clamp(42px,5vw,78px)/.92 var(--serif); letter-spacing:-.06em; }
 .product-detail-price { display:flex; align-items:center; gap:12px; font:500 16px var(--sans); color:var(--accent); }
@@ -398,7 +401,9 @@ h1 i,h2 i { color:#beb7aa; }
   .cart-item { padding:16px 22px; }
   .cart-footer { padding:18px 22px 24px; }
   .product-detail { display:block; padding:82px 6vw 70px; }
-  .product-detail-gallery { grid-template-columns:1fr; gap:10px; }
+  .product-detail-gallery { display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain; scrollbar-width:none; margin-right:-6vw; padding-right:6vw; }
+  .product-detail-gallery::-webkit-scrollbar { display:none; }
+  .product-detail-image { flex:0 0 88%; scroll-snap-align:start; }
   .product-detail-info { position:static; padding:42px 0 0; }
   .product-detail-info h1 { font-size:clamp(42px,12vw,72px); }
 }

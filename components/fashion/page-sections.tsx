@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight, Check, Minus, Plus, ShoppingBag } from 'lucide-react'
+import { ArrowUpRight, Check, Minus, Plus, ShoppingBag, X } from 'lucide-react'
 import { shopProducts, shopCategories, collections, getProductsByCategory, getCollectionProducts, getNewDropProducts, getSaleProducts, getCollection, getProduct, heroImage, type ShopCategory, type ShopProduct } from '@/lib/fashion-data'
 import { useCart } from '@/lib/cart-context'
 import { Button, Footer, PageShell } from './site-shell'
@@ -126,7 +126,19 @@ export function ProductDetailPage({ slug }: { slug: string }) {
 function ProductDetail({ product }: { product: ShopProduct }) {
   const { addItem } = useCart()
   const [quantity, setQuantity] = useState(1)
+  const [expandedImage, setExpandedImage] = useState<string | null>(null)
   const images = [product.image, ...(product.hoverImage ? [product.hoverImage] : [])]
+
+  useEffect(() => {
+    if (!expandedImage) return
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === 'Escape') setExpandedImage(null) }
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', closeOnEscape)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [expandedImage])
 
   const addToBag = () => {
     for (let i = 0; i < quantity; i += 1) addItem(product)
@@ -136,9 +148,9 @@ function ProductDetail({ product }: { product: ShopProduct }) {
     <main className="product-detail">
         <div className="product-detail-gallery">
           {images.map((image, index) => (
-            <div className="product-detail-image" key={image}>
+            <button type="button" className="product-detail-image" key={image} onClick={() => setExpandedImage(image)} aria-label={`View ${product.name} image ${index + 1} fullscreen`}>
               <img src={image} alt={`${product.name} view ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} />
-            </div>
+            </button>
           ))}
         </div>
         <aside className="product-detail-info">
@@ -164,6 +176,12 @@ function ProductDetail({ product }: { product: ShopProduct }) {
           </div>
           <p className="product-detail-note">Free shipping for orders above LKR 25,000.</p>
         </aside>
+      {expandedImage && (
+        <div className="product-lightbox" role="dialog" aria-modal="true" aria-label={`${product.name} enlarged image`} onClick={() => setExpandedImage(null)}>
+          <button type="button" className="product-lightbox-close" onClick={() => setExpandedImage(null)} aria-label="Close enlarged image"><X size={22} /></button>
+          <img src={expandedImage} alt={`${product.name} enlarged view`} onClick={(event) => event.stopPropagation()} />
+        </div>
+      )}
     </main>
   )
 }
