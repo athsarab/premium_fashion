@@ -2,8 +2,9 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight, Check } from 'lucide-react'
-import { shopProducts, shopCategories, collections, getProductsByCategory, getCollectionProducts, getNewDropProducts, getSaleProducts, getCollection, heroImage, type ShopCategory } from '@/lib/fashion-data'
+import { ArrowUpRight, Check, Minus, Plus, ShoppingBag } from 'lucide-react'
+import { shopProducts, shopCategories, collections, getProductsByCategory, getCollectionProducts, getNewDropProducts, getSaleProducts, getCollection, getProduct, heroImage, type ShopCategory, type ShopProduct } from '@/lib/fashion-data'
+import { useCart } from '@/lib/cart-context'
 import { Button, Footer, PageShell } from './site-shell'
 import { Hero, SignatureBreak, ShopCard, ShopShowcase } from './content-sections'
 
@@ -108,6 +109,62 @@ export function ShopCategoryPage({ category }: { category: ShopCategory }) {
         <Footer />
       </main>
     </PageShell>
+  )
+}
+
+/* ── Product Detail Page ────────────────────────────────── */
+export function ProductDetailPage({ slug }: { slug: string }) {
+  const product = getProduct(slug)
+  if (!product) return null
+  return (
+    <PageShell>
+      <ProductDetail product={product} />
+    </PageShell>
+  )
+}
+
+function ProductDetail({ product }: { product: ShopProduct }) {
+  const { addItem } = useCart()
+  const [quantity, setQuantity] = useState(1)
+  const images = [product.image, ...(product.hoverImage ? [product.hoverImage] : [])]
+
+  const addToBag = () => {
+    for (let i = 0; i < quantity; i += 1) addItem(product)
+  }
+
+  return (
+    <main className="product-detail">
+        <div className="product-detail-gallery">
+          {images.map((image, index) => (
+            <div className="product-detail-image" key={image}>
+              <img src={image} alt={`${product.name} view ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} />
+            </div>
+          ))}
+        </div>
+        <aside className="product-detail-info">
+          <p className="eyebrow">JEILEE&apos;S / {product.category.toUpperCase()}</p>
+          <h1>{product.name}</h1>
+          <div className="product-detail-price">
+            <span>{product.price}</span>
+            {product.originalPrice && <del>{product.originalPrice}</del>}
+          </div>
+          <p className="product-detail-variant">{product.variant}</p>
+          <div className="product-detail-rule" />
+          <div className="product-detail-colors">
+            <span>Colour</span>
+            <div>{product.colors.map((color, index) => <span key={color} className="product-detail-swatch" style={{ background: color }} aria-label={`Colour option ${index + 1}`} />)}</div>
+          </div>
+          <div className="product-detail-actions">
+            <div className="product-detail-quantity" aria-label="Quantity">
+              <button type="button" onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Decrease quantity"><Minus size={14} /></button>
+              <span>{quantity}</span>
+              <button type="button" onClick={() => setQuantity(quantity + 1)} aria-label="Increase quantity"><Plus size={14} /></button>
+            </div>
+            <button type="button" className="product-detail-add" onClick={addToBag}><ShoppingBag size={16} /> Add to bag</button>
+          </div>
+          <p className="product-detail-note">Free shipping for orders above LKR 25,000.</p>
+        </aside>
+    </main>
   )
 }
 

@@ -36,7 +36,6 @@ export type ShopProduct = {
   name: string
   category: ShopCategory
   collectionSlug?: string
- main
   variant: string
   price: string
   originalPrice?: string
@@ -44,6 +43,10 @@ export type ShopProduct = {
   hoverImage?: string
   colors: string[]
   isNew?: boolean
+}
+
+export function productSlug(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 }
 
 export const shopProducts: ShopProduct[] = [
@@ -114,4 +117,8 @@ export function getSaleProducts(): ShopProduct[] {
 
 export function getCollection(slug: string): Collection | undefined {
   return collections.find(c => c.slug === slug)
+}
+
+export function getProduct(slug: string): ShopProduct | undefined {
+  return shopProducts.find(product => productSlug(product.name) === slug)
 }
