@@ -193,9 +193,6 @@ h1 i,h2 i { color:#beb7aa; }
 .shop-card-body { padding:16px 0 0; }
 .shop-card-logo { display:block; margin-bottom:12px; font:300 18px var(--brand); letter-spacing:.18em; text-transform:uppercase; color:var(--foreground); }
 .shop-card-logo span { display:inline-block; margin-left:2px; font:8px var(--sans); letter-spacing:0; vertical-align:top; }
-.shop-card-swatches { display:flex; gap:6px; margin-bottom:10px; }
-.shop-swatch { width:14px; height:14px; border-radius:50%; border:1.5px solid rgba(0,0,0,.12); padding:0; cursor:pointer; transition:transform .2s,box-shadow .2s; }
-.shop-swatch:hover { transform:scale(1.25); box-shadow:0 0 0 2px var(--background),0 0 0 3.5px var(--foreground); }
 .shop-card-name { margin:0; font:500 15px/1.3 var(--sans); letter-spacing:-.01em; color:var(--foreground); }
 .shop-card-variant { margin:3px 0 0; font:12px/1.3 var(--sans); color:var(--muted-foreground); }
 .shop-card-pricing { margin-top:8px; display:flex; align-items:center; gap:10px; }
@@ -219,9 +216,6 @@ h1 i,h2 i { color:#beb7aa; }
 .product-detail-price del { color:var(--muted-foreground); font-size:13px; }
 .product-detail-variant { margin:10px 0 0; color:var(--muted-foreground); font:12px var(--mono); text-transform:uppercase; letter-spacing:.08em; }
 .product-detail-rule { height:1px; background:var(--border); margin:35px 0 25px; }
-.product-detail-colors { display:flex; justify-content:space-between; align-items:center; font:11px var(--mono); text-transform:uppercase; letter-spacing:.1em; }
-.product-detail-colors > div { display:flex; gap:9px; }
-.product-detail-swatch { width:18px; height:18px; border:1px solid rgba(0,0,0,.15); border-radius:50%; }
 .product-detail-actions { display:flex; gap:10px; margin-top:32px; }
 .product-detail-quantity { display:flex; align-items:center; border:1px solid var(--border); }
 .product-detail-quantity button { width:40px; height:48px; display:grid; place-items:center; background:none; border:0; color:inherit; }
@@ -418,7 +412,7 @@ h1 i,h2 i { color:#beb7aa; }
   .shop-grid { grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:14px; row-gap:38px; }
   .shop-card-image { aspect-ratio:3/4; }
   .shop-card-body { padding-top:12px; }
-  .shop-card-logo,.shop-card-swatches,.shop-card-variant { display:none; }
+  .shop-card-logo,.shop-card-variant { display:none; }
   .shop-card-name { min-height:34px; font-size:12px; line-height:1.4; text-transform:uppercase; letter-spacing:.02em; }
   .shop-card-pricing { margin-top:8px; gap:6px; }
   .shop-card-price,.shop-card-original { font-size:12px; }

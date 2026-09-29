@@ -162,10 +162,6 @@ function ProductDetail({ product }: { product: ShopProduct }) {
           </div>
           <p className="product-detail-variant">{product.variant}</p>
           <div className="product-detail-rule" />
-          <div className="product-detail-colors">
-            <span>Colour</span>
-            <div>{product.colors.map((color, index) => <span key={color} className="product-detail-swatch" style={{ background: color }} aria-label={`Colour option ${index + 1}`} />)}</div>
-          </div>
           <div className="product-detail-actions">
             <div className="product-detail-quantity" aria-label="Quantity">
               <button type="button" onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Decrease quantity"><Minus size={14} /></button>
