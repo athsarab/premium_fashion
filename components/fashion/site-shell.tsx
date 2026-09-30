@@ -67,6 +67,7 @@ export function Navbar() {
         ))}
       </nav>
       <div className="nav-actions">
+        <Link href="/account" className="nav-account">Account</Link>
         <Link href="/contact" className="nav-contact">Start a conversation <ArrowUpRight size={14} /></Link>
         <button className="nav-cart-btn" onClick={toggleDrawer} aria-label="Open shopping bag">
           <ShoppingBag size={19} />
@@ -125,6 +126,10 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
             </Link>
           )
         )}
+        <Link href="/account" onClick={onClose} className="mobile-nav-link">
+          <span>Account</span>
+          <ChevronRight size={20} />
+        </Link>
       </nav>
       <p className="mobile-menu-tagline">Clothing for considered lives.<br />Designed in London, worn everywhere.</p>
     </div>
