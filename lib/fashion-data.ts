@@ -81,7 +81,7 @@ export const navItems: NavItem[] = [
     children: collections.map(c => ({ label: c.name, href: `/collections/${c.slug}` })),
   },
   { label: 'Sale', href: '/sale' },
-  { label: 'Our Story', href: '/our-story' },
+  { label: 'Contact Us', href: '/contact' },
   { label: 'About Us', href: '/about' },
 ]
 
