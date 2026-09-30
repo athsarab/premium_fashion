@@ -131,10 +131,10 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   )
 }
 
-export function PageShell({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+export function PageShell({ children, dark = false, className = '' }: { children: React.ReactNode; dark?: boolean; className?: string }) {
   return (
     <CartProvider>
-      <div className={dark ? 'site site-dark' : 'site'}>
+      <div className={`${dark ? 'site site-dark' : 'site'} ${className}`.trim()}>
         <ScrollProgress />
         <Navbar />
         {children}
