@@ -117,7 +117,7 @@ export function ProductDetailPage({ slug }: { slug: string }) {
   const product = getProduct(slug)
   if (!product) return null
   return (
-    <PageShell>
+    <PageShell className="site-product">
       <ProductDetail product={product} />
     </PageShell>
   )
