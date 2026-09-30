@@ -39,11 +39,27 @@ export function Navbar() {
             {item.children && (
               <div className="desktop-dropdown">
                 <div className="desktop-dropdown-inner">
-                  {item.children.map((child) => (
-                    <Link key={child.href} href={child.href} className="desktop-dropdown-link">
-                      {child.label}
-                    </Link>
-                  ))}
+                  <div className="desktop-dropdown-feature">
+                    <img
+                      src={item.label === 'Shop' ? shopCategories[0]?.image : '/images/products/anime.jpeg'}
+                      alt=""
+                      aria-hidden="true"
+                    />
+                    <div className="desktop-dropdown-feature-copy">
+                      <span>{item.label} / 01</span>
+                      <strong>{item.label === 'Shop' ? 'The edit.' : 'Stories in motion.'}</strong>
+                    </div>
+                  </div>
+                  <div className="desktop-dropdown-links">
+                    <div className="desktop-dropdown-label">Browse {item.label.toLowerCase()}</div>
+                    {item.children.map((child, index) => (
+                      <Link key={child.href} href={child.href} className="desktop-dropdown-link">
+                        <span>{String(index + 1).padStart(2, '0')}</span>
+                        {child.label}
+                        <ArrowUpRight size={13} />
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
