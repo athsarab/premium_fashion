@@ -243,11 +243,6 @@ export function ShopCard({ product }: { product: ShopProduct }) {
       </div>
       <div className="shop-card-body">
         <span className="shop-card-logo">JEILEE’S<span>®</span></span>
-        <div className="shop-card-swatches">
-          {product.colors.map((color, i) => (
-            <button key={i} className="shop-swatch" style={{ background: color }} aria-label={`Color option ${i + 1}`} />
-          ))}
-        </div>
         <h3 className="shop-card-name">{product.name}</h3>
         <p className="shop-card-variant">{product.variant}</p>
         <div className="shop-card-pricing">

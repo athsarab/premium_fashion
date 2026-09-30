@@ -5,7 +5,7 @@ import type { ShopProduct } from '@/lib/fashion-data'
 
 export type CartItem = ShopProduct & { quantity: number }
 
-type CartState = { items: CartItem[]; drawerOpen: boolean; toast: string | null }
+type CartState = { items: CartItem[]; drawerOpen: boolean; toast: string | null; hydrated: boolean }
 
 type CartAction =
   | { type: 'ADD_ITEM'; product: ShopProduct }
@@ -47,8 +47,15 @@ function cartReducer(state: CartState, action: CartAction): CartState {
       return { ...state, drawerOpen: !state.drawerOpen }
     case 'SET_TOAST':
       return { ...state, toast: action.message }
-    case 'HYDRATE':
-      return { ...state, items: action.items }
+    case 'HYDRATE': {
+      if (state.hydrated) return state
+      const items = action.items.map((storedItem) => {
+        const currentItem = state.items.find((item) => item.name === storedItem.name)
+        return currentItem ? { ...storedItem, quantity: storedItem.quantity + currentItem.quantity } : storedItem
+      })
+      const hydratedNames = new Set(action.items.map((item) => item.name))
+      return { ...state, items: [...items, ...state.items.filter((item) => !hydratedNames.has(item.name))], hydrated: true }
+    }
     default:
       return state
   }
@@ -75,23 +82,24 @@ const CartContext = createContext<CartContextValue | null>(null)
 const STORAGE_KEY = 'Jeilees-cart'
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(cartReducer, { items: [], drawerOpen: false, toast: null })
+  const [state, dispatch] = useReducer(cartReducer, { items: [], drawerOpen: false, toast: null, hydrated: false })
 
   // Hydrate from localStorage on mount
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY)
-      if (stored) {
-        const parsed = JSON.parse(stored)
-        if (Array.isArray(parsed)) dispatch({ type: 'HYDRATE', items: parsed })
-      }
-    } catch { /* ignore */ }
+      const parsed = stored ? JSON.parse(stored) : []
+      dispatch({ type: 'HYDRATE', items: Array.isArray(parsed) ? parsed : [] })
+    } catch {
+      dispatch({ type: 'HYDRATE', items: [] })
+    }
   }, [])
 
   // Persist to localStorage on change
   useEffect(() => {
+    if (!state.hydrated) return
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.items)) } catch { /* ignore */ }
-  }, [state.items])
+  }, [state.items, state.hydrated])
 
   // Auto-dismiss toast
   useEffect(() => {
