@@ -362,30 +362,46 @@ h1 i,h2 i { color:#beb7aa; }
 /* ── Account ────────────────────────────────────────────── */
 .nav-account { font:10px var(--mono); text-transform:uppercase; letter-spacing:.12em; opacity:.8; transition:opacity .25s; }
 .nav-account:hover { opacity:1; }
-.account-page { min-height:72vh; display:grid; grid-template-columns:1fr minmax(320px,520px); gap:12vw; align-items:center; padding-top:150px; }
+.account-page { position:relative; min-height:calc(100svh - 82px); display:grid; grid-template-columns:minmax(0,1fr) minmax(360px,520px); gap:8vw; align-items:center; overflow:hidden; padding-top:150px; isolation:isolate; background:#252621; }
+.account-page::after { content:''; position:absolute; z-index:0; inset:0; pointer-events:none; background:linear-gradient(115deg,rgba(15,16,14,.5),transparent 45%,rgba(15,16,14,.3)),radial-gradient(circle at 82% 18%,rgba(255,255,255,.14),transparent 28%); }
+.account-intro { display:contents; }
+.account-heading { position:relative; z-index:1; align-self:start; margin-top:3vh; color:#fff; animation:rise .8s .1s both; }
 .account-heading h1 { margin:18px 0 0; font:500 clamp(70px,10vw,150px)/.84 var(--serif); letter-spacing:-.08em; }
-.account-panel { width:100%; padding:34px; border:1px solid var(--border); background:color-mix(in srgb,var(--background) 82%,#fff); }
+.account-visual { position:absolute; z-index:0; inset:0; min-height:0; overflow:hidden; background:var(--charcoal); color:#fff; }
+.account-visual img { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover; object-position:center; transition:transform .8s ease; }
+.account-visual:hover img { transform:scale(1.04); }
+.account-visual-shade { position:absolute; inset:0; background:linear-gradient(90deg,rgba(15,16,14,.78),rgba(15,16,14,.16) 55%,rgba(15,16,14,.55)),linear-gradient(0deg,rgba(15,16,14,.75),rgba(15,16,14,.08) 65%); }
+.account-visual-copy { display:none; }
+.account-panel { position:relative; z-index:1; width:100%; padding:38px; border:1px solid rgba(255,255,255,.52); background:rgba(241,238,232,.82); box-shadow:18px 18px 0 rgba(157,73,60,.48),0 24px 70px rgba(0,0,0,.18); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); animation:rise .8s .2s both; }
 .account-panel-head { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; margin-bottom:30px; }
 .account-email { margin:10px 0 0; color:var(--muted-foreground); font-size:14px; word-break:break-word; }
-.account-form { display:flex; flex-direction:column; gap:22px; }
+.account-form { display:flex; flex-direction:column; gap:20px; }
 .account-form label { display:block; color:var(--muted-foreground); font:10px var(--mono); text-transform:uppercase; letter-spacing:.1em; }
-.account-form input { display:block; width:100%; margin-top:9px; padding:13px 0; border:0; border-bottom:1px solid var(--border); outline:0; background:none; color:inherit; }
-.account-form input:focus { border-color:var(--accent); }
+.account-form input { display:block; width:100%; margin-top:9px; padding:13px 0; border:0; border-bottom:1px solid color-mix(in srgb,var(--foreground) 30%,transparent); outline:0; background:transparent; color:inherit; transition:border-color .25s,box-shadow .25s; }
+.account-form input:focus { border-color:var(--accent); box-shadow:0 1px 0 var(--accent); }
+.account-form input:invalid:not(:placeholder-shown) { border-color:var(--accent); }
 .account-form .editorial-button { align-self:flex-start; background:var(--foreground); color:var(--background); }
 .account-form .editorial-button:disabled,.account-google:disabled { cursor:wait; opacity:.6; }
 .account-divider { display:flex; align-items:center; gap:12px; margin:28px 0 18px; color:var(--muted-foreground); font:9px var(--mono); }
 .account-divider::before,.account-divider::after { content:''; height:1px; flex:1; background:var(--border); }
-.account-google { width:100%; padding:13px 18px; border:1px solid var(--foreground); background:none; color:var(--foreground); font:10px var(--mono); letter-spacing:.12em; text-transform:uppercase; transition:background .25s,color .25s; }
+.account-google { width:100%; padding:13px 18px; border:1px solid color-mix(in srgb,var(--foreground) 75%,transparent); background:rgba(255,255,255,.08); color:var(--foreground); font:10px var(--mono); letter-spacing:.12em; text-transform:uppercase; transition:background .25s,color .25s,border-color .25s; }
 .account-google:hover { background:var(--foreground); color:var(--background); }
 .account-switch,.account-signout { display:inline-flex; align-items:center; gap:7px; margin-top:22px; padding:0; border:0; border-bottom:1px solid currentColor; background:none; color:var(--muted-foreground); font:10px var(--mono); letter-spacing:.08em; text-transform:uppercase; }
 .account-switch:hover,.account-signout:hover { color:var(--foreground); }
 .account-signout { margin-top:0; }
 .account-message { display:flex; align-items:center; gap:7px; margin:22px 0 0; color:var(--accent); font-size:13px; line-height:1.45; }
+.account-feedback { display:flex; align-items:flex-start; gap:10px; margin-top:24px; padding:14px 14px 14px 15px; border:1px solid; font-size:13px; line-height:1.45; animation:rise .35s ease both; }
+.account-feedback span { flex:1; }
+.account-feedback button { display:grid; flex-shrink:0; place-items:center; padding:1px; border:0; background:none; color:inherit; opacity:.65; }
+.account-feedback button:hover { opacity:1; }
+.account-feedback-success { border-color:#a8b9a4; background:#e8efe5; color:#31523a; }
+.account-feedback-error { border-color:#d3a29a; background:#f8e8e4; color:#8b342c; }
 @media (max-width:800px) {
   .nav-account { display:none; }
-  .account-page { display:block; min-height:0; padding-top:130px; }
-  .account-heading { margin-bottom:55px; }
-  .account-panel { padding:25px 20px; }
+  .account-page { display:block; min-height:calc(100svh - 70px); padding-top:130px; padding-bottom:80px; }
+  .account-heading { margin:0 0 55px; }
+  .account-heading h1 { font-size:clamp(68px,18vw,110px); }
+  .account-panel { padding:28px 22px; box-shadow:10px 10px 0 rgba(157,73,60,.45); }
 }
 
 /* ── Keyframes ───────────────────────────────────────────── */
