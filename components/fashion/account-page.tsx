@@ -1,7 +1,7 @@
 'use client'
 
 import { FormEvent, useEffect, useRef, useState } from 'react'
-import { ArrowUpRight, Check, LogOut } from 'lucide-react'
+import { AlertCircle, ArrowUpRight, Check, LogOut, X } from 'lucide-react'
 import type { User } from '@supabase/supabase-js'
 import { createClient } from '@/lib/supabase/client'
 import { Footer, PageShell } from './site-shell'
@@ -18,7 +18,7 @@ export function AccountPage() {
   const [password, setPassword] = useState('')
   const [fullName, setFullName] = useState('')
   const [phone, setPhone] = useState('')
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null)
   const [busy, setBusy] = useState(false)
 
   useEffect(() => {
@@ -50,15 +50,15 @@ export function AccountPage() {
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setBusy(true)
-    setMessage('')
+    setMessage(null)
     const supabase = getSupabase()
     const result = mode === 'login'
       ? await supabase.auth.signInWithPassword({ email, password })
       : await supabase.auth.signUp({ email, password, options: { data: { full_name: fullName, phone } } })
     setBusy(false)
-    if (result.error) return setMessage(result.error.message)
-    if (mode === 'signup' && !result.data.session) setMessage('Check your email to confirm your account, then log in.')
-    else setMessage('Welcome back.')
+    if (result.error) return setMessage({ type: 'error', text: getAuthError(result.error.message) })
+    if (mode === 'signup' && !result.data.session) setMessage({ type: 'success', text: 'Account created. Check your email to confirm your account, then sign in.' })
+    else setMessage({ type: 'success', text: mode === 'login' ? 'Welcome back. You are now signed in.' : 'Your account is ready.' })
   }
 
   async function signInWithGoogle() {
@@ -66,7 +66,7 @@ export function AccountPage() {
     const { error } = await getSupabase().auth.signInWithOAuth({ provider: 'google', options: { redirectTo: `${window.location.origin}/account` } })
     if (error) {
       setBusy(false)
-      setMessage(error.message)
+      setMessage({ type: 'error', text: getAuthError(error.message) })
     }
   }
 
@@ -77,20 +77,39 @@ export function AccountPage() {
     const { error } = await supabase.from('profiles').upsert({ id: user?.id, full_name: fullName, phone })
     if (!error) await supabase.auth.updateUser({ data: { full_name: fullName, phone } })
     setBusy(false)
-    setMessage(error?.message ?? 'Your details are saved.')
+    setMessage(error ? { type: 'error', text: error.message } : { type: 'success', text: 'Your details are saved.' })
   }
 
   async function signOut() {
     await getSupabase().auth.signOut()
-    setMessage('You are signed out.')
+    setMessage({ type: 'success', text: 'You are signed out.' })
+  }
+
+  function getAuthError(error: string) {
+    if (error.toLowerCase().includes('invalid login credentials')) return 'That email and password do not match. Check your details or create a new account.'
+    if (error.toLowerCase().includes('user already registered')) return 'An account with this email already exists. Try signing in instead.'
+    if (error.toLowerCase().includes('password')) return 'Your password must be at least 8 characters long.'
+    return error
   }
 
   return (
     <PageShell>
       <main className="account-page section-pad">
-        <div className="account-heading">
-          <p className="eyebrow">JEILEE’S / ACCOUNT</p>
-          <h1>{user ? <>WELCOME<br /><i>BACK.</i></> : mode === 'login' ? <>SIGN<br /><i>IN.</i></> : <>JOIN<br /><i>US.</i></>}</h1>
+        <div className="account-intro">
+          <div className="account-heading">
+            <p className="eyebrow">JEILEE’S / ACCOUNT</p>
+            <h1>{user ? <>WELCOME<br /><i>BACK.</i></> : mode === 'login' ? <>SIGN<br /><i>IN.</i></> : <>JOIN<br /><i>US.</i></>}</h1>
+          </div>
+          <div className="account-visual">
+            <img
+              src={mode === 'login'
+                ? 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85'
+                : 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=85'}
+              alt={mode === 'login' ? "Curated fashion pieces in a boutique" : "Model wearing a refined fashion look"}
+            />
+            <div className="account-visual-shade" />
+            <div className="account-visual-copy"><span>THE JEILEE’S EDIT</span><strong>Wear what<br /><i>moves you.</i></strong></div>
+          </div>
         </div>
         {user ? (
           <div className="account-panel">
@@ -100,7 +119,7 @@ export function AccountPage() {
               <label>Phone<input value={phone} onChange={(event) => setPhone(event.target.value)} placeholder="Optional" /></label>
               <button className="editorial-button" type="submit" disabled={busy}>Save details <Check size={15} /></button>
             </form>
-            {message && <p className="account-message"><Check size={15} /> {message}</p>}
+            {message && <Feedback message={message} onDismiss={() => setMessage(null)} />}
           </div>
         ) : (
           <div className="account-panel">
@@ -113,12 +132,23 @@ export function AccountPage() {
             </form>
             <div className="account-divider"><span>OR</span></div>
             <button className="account-google" type="button" onClick={signInWithGoogle} disabled={busy}>Continue with Google</button>
-            <button className="account-switch" type="button" onClick={() => { setMode(mode === 'login' ? 'signup' : 'login'); setMessage('') }}>{mode === 'login' ? 'Create an account' : 'Already have an account? Sign in'}</button>
-            {message && <p className="account-message">{message}</p>}
+            <button className="account-switch" type="button" onClick={() => { setMode(mode === 'login' ? 'signup' : 'login'); setMessage(null) }}>{mode === 'login' ? 'Create an account' : 'Already have an account? Sign in'}</button>
+            {message && <Feedback message={message} onDismiss={() => setMessage(null)} />}
           </div>
         )}
       </main>
       <Footer />
     </PageShell>
+  )
+}
+
+function Feedback({ message, onDismiss }: { message: { text: string; type: 'success' | 'error' }; onDismiss: () => void }) {
+  const Icon = message.type === 'success' ? Check : AlertCircle
+  return (
+    <div className={`account-feedback account-feedback-${message.type}`} role={message.type === 'error' ? 'alert' : 'status'}>
+      <Icon size={17} aria-hidden="true" />
+      <span>{message.text}</span>
+      <button type="button" onClick={onDismiss} aria-label="Dismiss message"><X size={15} /></button>
+    </div>
   )
 }
