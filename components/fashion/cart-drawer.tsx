@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import { Minus, Plus, ShoppingBag, Trash2, X } from 'lucide-react'
 import { useCart, type CartItem } from '@/lib/cart-context'
 
-const WHATSAPP_NUMBER = '94771234567'
+const WHATSAPP_NUMBER = '94772284278'
 
 function formatCurrency(amount: number): string {
   return `LKR ${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
