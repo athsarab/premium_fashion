@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { ArrowUpRight, Check, ChevronDown, ChevronRight, Menu, ShoppingBag, X } from 'lucide-react'
 import { navItems, shopCategories, type NavItem } from '@/lib/fashion-data'
 import { CartProvider, useCart } from '@/lib/cart-context'
+import { AuthProvider } from '@/lib/auth-context'
 import { CartDrawer, CartToast } from './cart-drawer'
 
 export function ScrollProgress() {
@@ -148,6 +149,18 @@ export function PageShell({ children, dark = false, className = '' }: { children
         <CartToast />
       </div>
     </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        <div className={`${dark ? 'site site-dark' : 'site'} ${className}`.trim()}>
+          <ScrollProgress />
+          <Navbar />
+          {children}
+          <BackToTop />
+          <CartDrawer />
+          <CartToast />
+        </div>
+      </CartProvider>
+    </AuthProvider>
   )
 }
 
