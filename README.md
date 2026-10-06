@@ -11,7 +11,7 @@ This repository is centered around the brand identity of JEILEE’S and includes
 - [Overview](#overview)
 - [Project Highlights](#project-highlights)
 - [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
+- [Project Structure](#project-structure) 
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
