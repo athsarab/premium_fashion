@@ -377,10 +377,12 @@ h1 i,h2 i { color:#beb7aa; }
 .success-state p { color:var(--muted-foreground); }
 .success-state button { background:none; border:0; border-bottom:1px solid; padding:15px 0; margin-top:20px; font:10px var(--mono); text-transform:uppercase; }
 .about-story { padding-bottom:180px; }
-.about-story>h2 { margin:55px 0 100px; max-width:1150px; font-size:clamp(52px,8vw,125px); }
+.about-story>h2 { margin:55px 0 100px; max-width:1150px; font-size:clamp(52px,8vw,125px); line-height:.96; letter-spacing:-.045em; }
 .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:12vw; align-items:center; }
 .about-grid img { width:100%; aspect-ratio:4/5; object-fit:cover; }
-.about-grid .large-copy { max-width:440px; }
+.about-copy { max-width:440px; font:400 clamp(16px,1.25vw,18px)/1.8 var(--sans); letter-spacing:0; }
+.about-copy p { margin:0; }
+.about-copy p + p { margin-top:1.5em; }
 
 /* ── Misc ────────────────────────────────────────────────── */
 .back-top { position:fixed; z-index:40; right:24px; bottom:24px; width:42px; height:42px; border:1px solid var(--foreground); background:var(--background); opacity:0; pointer-events:none; transition:.3s; }
@@ -474,7 +476,7 @@ h1 i,h2 i { color:#beb7aa; }
   .collection-card-image { min-height:420px; }
   .contact-hero { min-height:70vh; padding:25vh 6vw 10vh; }
   .contact-body h2 { font-size:70px; }
-  .about-story>h2 { margin-bottom:65px; }
+  .about-story>h2 { margin-bottom:65px; font-size:clamp(36px,10vw,52px); }
   .shop-page-head h2 { font-size:clamp(48px,10vw,80px); }
   .cart-drawer { width:100vw; }
   .cart-header { padding:20px 22px; }
