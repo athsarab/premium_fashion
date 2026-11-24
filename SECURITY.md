@@ -6,6 +6,7 @@
 - Next.js version disclosure is disabled.
 - Production builds now fail on TypeScript errors instead of publishing an unchecked build.
 - The cart is stored in browser `localStorage` only. It contains product names and quantities, not passwords, payment details, or customer records.
+- Authentication and profiles are handled by Supabase. Passwords are never stored by this application; profile rows are protected by Supabase Row Level Security so users can only access their own details.
 
 ## Sessions and cookies
 
