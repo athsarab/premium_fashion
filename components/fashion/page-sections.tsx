@@ -350,14 +350,15 @@ export function OurStoryPage() {
         />
         <section className="about-story section-pad" id="about-story">
           <p className="eyebrow">01 / OUR PHILOSOPHY</p>
-          <h2>FASHION ISN&apos;T<br />JUST WHAT YOU WEAR.<br /><i>IT&apos;S HOW YOU MOVE</i><br />THROUGH THE WORLD.</h2>
+          <h2>FASHION IS NOT<br />JUST WHAT YOU WEAR.<br /><i>IT&apos;S HOW YOU MOVE</i><br />THROUGH THE WORLD.</h2>
           <div className="about-grid">
             <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1200&q=85" alt="JEILEE’S studio portrait" />
-            <p className="large-copy">
-              We believe in clothes that stay with you. In a world of more, we choose better: precise cuts, honest materials, and a slower kind of ambition.
-              <br /><br />
-              <span className="body-copy">Our collections are designed in London and made with a small, trusted network of makers. We are interested in the tension between utility and beauty — the things you need, made extraordinary.</span>
-            </p>
+            <div className="about-copy">
+              <p>
+                We believe in clothes that stay with you. In a world of more, we choose better: precise cuts, honest materials, and a slower kind of ambition.
+              </p>
+              <p>Our collections are designed in London and made with a small, trusted network of makers. We are interested in the tension between utility and beauty — the things you need, made extraordinary.</p>
+            </div>
           </div>
         </section>
         <SignatureBreak />
@@ -382,15 +383,16 @@ export function AboutPage() {
         />
         <section className="about-story section-pad" id="about-story">
           <p className="eyebrow">01 / WHO WE ARE</p>
-          <h2>FASHION ISN&apos;T<br />JUST WHAT YOU WEAR.<br /><i>IT&apos;S HOW YOU MOVE</i><br />THROUGH THE WORLD.</h2>
+          <h2>FASHION IS NOT<br />JUST    WHAT YOU WEAR.<br /><i>IT&apos;S HOW YOU MOVE</i><br />THROUGH THE WORLD.</h2>
           <div className="about-grid">
-            <p className="large-copy">
-              JEILEE’S, where modern fashion meets classic elegance.
-Our brand is dedicated to redefining modern style by offering a wide range of clothing for both men and women.
-At JEILEE’S, we believe that fashion should be accessible to everyone, which is why we strive to offer products that blend quality craftsmanship with everyday looks.
-              <br /><br />
-              <span className="body-copy">JEILEE’S is your go-to destination for incredible fashion that speaks to your regular style. Explore our latest arrivals and join us in celebrating the joy of self-expression through fashion.</span>
-            </p>
+            <div className="about-copy">
+              <p>
+                JEILEE’S, where modern fashion meets classic elegance.
+                Our brand is dedicated to redefining modern style by offering a wide range of clothing for both men and women.
+                At JEILEE’S, we believe that fashion should be accessible to everyone, which is why we strive to offer products that blend quality craftsmanship with everyday looks.
+              </p>
+              <p>JEILEE’S is your go-to destination for incredible fashion that speaks to your regular style. Explore our latest arrivals and join us in celebrating the joy of self-expression through fashion.</p>
+            </div>
           </div>
         </section>
         <SignatureBreak />
@@ -414,7 +416,6 @@ export function ContactPage() {
           <div>
             <p className="eyebrow">02 / START A CONVERSATION</p>
             <h2>Tell us<br /><i>everything.</i></h2>
-            <p className="body-copy">We read every message. Share a thought, a project, or a question and we&apos;ll get back to you soon.</p>
           </div>
           <ContactForm />
         </section>
