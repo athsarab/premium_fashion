@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { ArrowUpRight, Check, ChevronDown, ChevronRight, Menu, ShoppingBag, X } from 'lucide-react'
+import { ArrowUp, ArrowUpRight, Check, ChevronDown, ChevronRight, Menu, Music2, ShoppingBag, X } from 'lucide-react'
 import { navItems, shopCategories, type NavItem } from '@/lib/fashion-data'
 import { CartProvider, useCart } from '@/lib/cart-context'
 import { AuthProvider } from '@/lib/auth-context'
@@ -176,43 +176,61 @@ export function Footer() {
   const [joined, setJoined] = useState(false)
   return (
     <footer className="footer">
-      <div className="footer-top">
-        <div>
-          <Link href="/" className="footer-mark">JEILEE’S<span>®</span></Link>
-          <p>Clothing for considered lives.</p>
-        </div>
-        <div className="footer-links">
-          <div>
-            <p className="eyebrow">Shop</p>
+      <div className="footer-panel">
+        <div className="footer-top">
+          <div className="footer-brand-block">
+            <p className="footer-statement">Clothing for considered<br />lives — made with care.</p>
+            <p>© 2026 JEILEE’S STUDIO · <i>Clothing for considered lives.</i></p>
+          </div>
+          <div className="footer-link-group">
+            <p className="eyebrow">Navigation</p>
             <Link href="/new-drop">New Drop</Link>
             {shopCategories.map((cat) => (
               <Link href={`/shop/${cat.key}`} key={cat.key}>{cat.label}</Link>
             ))}
             <Link href="/sale">Sale</Link>
           </div>
-          <div>
-            <p className="eyebrow">Follow</p>
-            {['Instagram', 'Facebook', 'TikTok', 'Pinterest'].map((social) => (
-              <a href="#" key={social}>{social}</a>
-            ))}
+          <div className="footer-link-group">
+            <p className="eyebrow">Support</p>
+            <Link href="/contact">Contact Us</Link>
+            <Link href="/account">My Account</Link>
+            <Link href="/collections">Collections</Link>
+            <Link href="/our-story">Our Story</Link>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Legal Notice</a>
+          </div>
+          <div className="newsletter">
+            <p className="eyebrow">Get updates from JEILEE’S</p>
+            {joined ? (
+              <p className="joined"><Check size={15} /> You&apos;re on the list.</p>
+            ) : (
+              <form onSubmit={(event) => { event.preventDefault(); setJoined(true) }}>
+                <input aria-label="Email address" type="email" placeholder="Email address" required />
+                <button aria-label="Subscribe">Subscribe</button>
+              </form>
+            )}
+            <div className="footer-socials">
+              <p className="eyebrow">Follow us</p>
+              <div className="footer-social-links">
+                <a href="#" aria-label="Instagram">
+                  <svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.8" r=".8" fill="currentColor" stroke="none" />
+                  </svg>
+                </a>
+                <a href="#" aria-label="TikTok"><Music2 size={23} /></a>
+                <a href="#" aria-label="Facebook">
+                  <svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.6 1.6-1.6h1.7V3.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.3v3h2.8v8h3.4Z" />
+                  </svg>
+                </a>
+                <button type="button" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><ArrowUp size={20} /></button>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="newsletter">
-          <p className="eyebrow">Join the list</p>
-          {joined ? (
-            <p className="joined"><Check size={15} /> You&apos;re on the list.</p>
-          ) : (
-            <form onSubmit={(event) => { event.preventDefault(); setJoined(true) }}>
-              <input aria-label="Email address" type="email" placeholder="Email address" required />
-              <button aria-label="Subscribe"><ArrowUpRight size={18} /></button>
-            </form>
-          )}
-        </div>
-      </div>
-      <div className="footer-bottom">
-        <span>© 2025 JEILEE’S STUDIO</span>
-        <span>Made for movement</span>
-        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Back to top ↑</button>
+        <Link href="/" className="footer-wordmark" aria-label="JEILEE’S home">JEILEE’S</Link>
       </div>
     </footer>
   )
