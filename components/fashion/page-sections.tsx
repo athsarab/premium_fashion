@@ -416,6 +416,16 @@ export function ContactPage() {
           <div>
             <p className="eyebrow">02 / START A CONVERSATION</p>
             <h2>Tell us<br /><i>everything.</i></h2>
+            <div className="contact-socials">
+              <p className="eyebrow">FOLLOW THE STUDIO</p>
+              <div>
+                {['Instagram', 'Facebook', 'TikTok', 'Pinterest'].map((social) => (
+                  <a href="#" key={social}>
+                    {social}<ArrowUpRight size={13} />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
           <ContactForm />
         </section>

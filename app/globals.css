@@ -363,10 +363,15 @@ h1 i,h2 i { color:#beb7aa; }
 .footer-bottom button { background:none; border:0; color:inherit; font:inherit; }
 
 /* ── Other Page Sections ─────────────────────────────────── */
-.contact-hero { min-height:72vh; padding:25vh 7vw 10vh; background:var(--charcoal); color:var(--cream); }
+.contact-hero { min-height:72vh; padding:25vh 7vw 10vh; background:linear-gradient(90deg,rgba(15,16,14,.68),rgba(15,16,14,.18) 75%),linear-gradient(0deg,rgba(15,16,14,.52),transparent 65%),url("/images/contact%20us.jpeg") center 42%/cover no-repeat; color:var(--cream); }
 .contact-hero h1 { font-size:clamp(90px,15vw,220px); }
 .contact-hero>p:last-child { color:#aaa79e; max-width:260px; line-height:1.5; }
 .contact-body { display:grid; grid-template-columns:1fr 1fr; gap:12vw; }
+.contact-socials { margin-top:55px; }
+.contact-socials>.eyebrow { color:#aaa79e; margin-bottom:16px; }
+.contact-socials>div { display:flex; flex-wrap:wrap; gap:10px; }
+.contact-socials a { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border); border-radius:999px; padding:10px 14px; font:10px var(--mono); text-transform:uppercase; letter-spacing:.08em; transition:background .25s,color .25s,border-color .25s; }
+.contact-socials a:hover { background:var(--cream); border-color:var(--cream); color:var(--charcoal); }
 .contact-form { max-width:520px; padding-top:20px; }
 .contact-form label { display:block; margin-bottom:30px; color:var(--muted-foreground); font:10px var(--mono); text-transform:uppercase; letter-spacing:.1em; }
 .contact-form input,.contact-form textarea { display:block; width:100%; margin-top:10px; padding:14px 0; background:none; border:0; border-bottom:1px solid var(--border); outline:0; resize:vertical; color:inherit; transition:border .3s; }
