@@ -4,7 +4,7 @@ export type ShopCategory = 'basics' | 'tops' | 'bottoms' | 'dresses' | 'skirts'
 export const shopCategories: { key: ShopCategory; label: string; description: string; image: string }[] = [
   { key: 'basics', label: 'Basics', description: 'Essential foundations for every wardrobe.', image: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=800&q=85' },
 
-  { key: 'tops', label: 'Tops', description: 'Statement pieces and everyday favorites.', image: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=800&q=85' },
+  { key: 'tops', label: ' Tops', description: 'Statement pieces and everyday favorites.', image: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=800&q=85' },
   { key: 'bottoms', label: 'Bottoms', description: 'From tailored trousers to relaxed fits.', image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=85' },
   { key: 'dresses', label: 'Dresses', description: 'Fluid forms for every occasion.', image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=85' },
   { key: 'skirts', label: 'Skirts', description: 'Movement and grace in every step.', image: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=800&q=85' },
