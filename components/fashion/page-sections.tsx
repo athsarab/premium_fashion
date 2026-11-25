@@ -375,8 +375,8 @@ export function AboutPage() {
       <main>
         <Hero
           eyebrow="ABOUT US"
-          title={<>CLOTHES WITH<br /><i>A POINT OF VIEW.</i></>}
-          description="An independent fashion house for considered lives."
+          title={<>STYLE WITH<br /><i>INTENT.</i></>}
+          description="Independent style for considered lives."
           image="https://images.unsplash.com/photo-1496217590455-aa63a8350eea?auto=format&fit=crop&w=2200&q=85"
           cta="Learn more"
           href="#about-story"
