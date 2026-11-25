@@ -93,7 +93,7 @@ export function ShopCategoryPage({ category }: { category: ShopCategory }) {
       <main>
         <Hero
           eyebrow={`SHOP / ${(catData?.label || category).toUpperCase()}`}
-          title={<>{catData?.label || category}<br /><i>collection.</i></>}
+          title={<>{catData?.label || category}<br /><i className="category-collection-title"> collection.</i></>}
           description={catData?.description || 'Explore this category.'}
           image={catData?.image || heroImage}
           cta={`Shop ${catData?.label || category}`}
